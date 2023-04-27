@@ -87,6 +87,7 @@ a {
 p {
   margin: 0rem;
   max-width: 40em;
+  text-align: center;
 }
 
 h1,
@@ -115,6 +116,7 @@ h2 {
 h3 {
   font-size: 1.953rem;
   color: var(--orange-500);
+  text-align: center;
 }
 
 h4 {
