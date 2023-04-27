@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap");
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+:root {
+  /* orange colors */
+  --orange-100: #fde9d2;
+  --orange-200: #fcd4a5;
+  --orange-300: #fabe78;
+  --orange-400: #f9a94b;
+  --orange-500: #f7931e;
+  --orange-600: #c67618;
+  --orange-700: #945812;
+  --orange-800: #633b0c;
+  --orange-900: #311d06;
+
+  /* blue colors */
+  --blue-100: #ccd5ff;
+  --blue-200: #99aaff;
+  --blue-300: #6680ff;
+  --blue-400: #3355ff;
+  --blue-500: #002bff;
+  --blue-600: #0022cc;
+  --blue-700: #001a99;
+  --blue-800: #001166;
+  --blue-900: #000933;
+
+  /* grey colors */
+  --grey-400: #ffffff;
+  --grey-500: #f7f7f7;
+  --grey-600: #cccccc;
+  --grey-700: #999999;
+  --grey-800: #666666;
+  --grey-900: #333333;
+
+  /* fonts  */
+  --headingFont: "Lexend", sans-serif;
+  --bodyFont: "Montserrat", sans-serif;
+
+  --backgroundColor: var(--grey-500);
+  --textColor: #070808;
+  --borderRadius: 0.5rem;
+  --letterSpacing: 1px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body {
+  background: var(--backgroundColor);
+  font-family: var(--bodyFont);
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--textColor);
+  max-width: 100vw;
+  font-size: 1.6rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+p {
+  margin-bottom: 0rem;
+  max-width: 40em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+
+  font-family: var(--headingFont);
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+  color: var(--blue-500);
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+.img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+button {
+  color: var(--grey-500);
+  padding: 0.4em 1em;
+  font-size: 1.5em;
+  font-weight: 500;
+  border: none;
+
+  cursor: pointer;
+  transition: 0.3s linear;
+  background: linear-gradient(103deg, #5b77ff 0%, #002bff 100%);
+  box-shadow: -10px 20px 60px rgba(0, 43, 255, 0.2);
+  border-radius: 30px;
+}
+button:hover {
+  background-color: var(--textColor);
+  color: black;
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
