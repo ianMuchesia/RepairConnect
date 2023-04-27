@@ -37,7 +37,9 @@ html {
 
   /* grey colors */
   --grey-400: #ffffff;
+ 
   --grey-500: #fafafa;
+  --grey-550: #e7e7e7;
   --grey-600: #cccccc;
   --grey-700: #999999;
   --grey-800: #666666;
@@ -87,7 +89,7 @@ a {
 p {
   margin: 0rem;
   max-width: 40em;
-  text-align: center;
+  
 }
 
 h1,

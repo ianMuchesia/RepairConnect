@@ -1,0 +1,12 @@
+footer{
+    background: var(--black);
+    color: var(--orange-200);
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1.2em;
+}
+footer h5{
+   font-family:  "Montserrat", sans-serif;
+   font-weight: 400;
+   font-size: 1rem;
+}
