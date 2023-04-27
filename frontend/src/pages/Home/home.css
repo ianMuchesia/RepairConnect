@@ -1,0 +1,116 @@
+
+/*
+=============== 
+Hero
+===============
+*/
+
+
+
+.heroSection{
+    padding: 1em 0.75em
+}
+.heroContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap:1em;
+}
+.heroContent p{
+    text-align: center;
+}
+.heroImage-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.heroImage{
+    height: auto;
+    max-width: 100%;
+}
+
+@media screen and (max-width:450px)  {
+    .heroContent h3{
+        font-size: 1rem;
+    }
+    .heroContent h1{
+        font-size: 2rem;
+    }.heroContent p{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width:850px) {
+    .heroSection{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/*
+=============== 
+Home service 
+===============
+*/
+
+
+.homeServiceSection{
+  padding: 1em 0.75em;
+}
+.homeServiceSection h3{
+    text-align: center;
+}
+.serviceSectionContainer{
+    margin: 1em 0em;
+    display: grid;
+    gap:1em;
+}
+.homeServiceCard{
+    border: 1px solid var(--grey-600);
+    padding:1em 0.75em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap:0.5em;
+    cursor: pointer;
+    transition:0.5s ease-in-out;
+}
+.homeServiceCard:hover{
+    background: var(--orange-500);
+    color: var(--grey-400);
+}
+.homeServiceCard p{
+    text-align: center;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+}
+.homeServiceCard img{
+    height: auto;
+    max-width: 45%;
+}
+.homeServiceCard h4{
+    text-align: center;
+}
+.homeServiceBtn{
+    border-radius: 5px;
+}
+
+@media screen and (min-width:500px ) {
+    .serviceSectionContainer{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (min-width:800px ) {
+    .serviceSectionContainer{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media screen and (min-width:1000px ) {
+    .serviceSectionContainer{
+        margin: 1em 2em;
+    }
+}

@@ -37,18 +37,20 @@ html {
 
   /* grey colors */
   --grey-400: #ffffff;
-  --grey-500: #f7f7f7;
+  --grey-500: #fafafa;
   --grey-600: #cccccc;
   --grey-700: #999999;
   --grey-800: #666666;
   --grey-900: #333333;
+
+  --black:#070808;
 
   /* fonts  */
   --headingFont: "Lexend", sans-serif;
   --bodyFont: "Montserrat", sans-serif;
 
   --backgroundColor: var(--grey-500);
-  --textColor: #070808;
+  --textColor: var(--black);
   --borderRadius: 0.5rem;
   --letterSpacing: 1px;
 }
@@ -72,10 +74,10 @@ body {
   background: var(--backgroundColor);
   font-family: var(--bodyFont);
   font-weight: 500;
-  line-height: 1.75;
+  line-height: 1.5;
   color: var(--textColor);
   max-width: 100vw;
-  font-size: 1.6rem;
+  font-size: 1rem;
 }
 
 a {
@@ -83,7 +85,7 @@ a {
   text-decoration: none;
 }
 p {
-  margin-bottom: 0rem;
+  margin: 0rem;
   max-width: 40em;
 }
 
@@ -112,7 +114,7 @@ h2 {
 
 h3 {
   font-size: 1.953rem;
-  color: var(--blue-500);
+  color: var(--orange-500);
 }
 
 h4 {
@@ -141,8 +143,8 @@ button {
 
   cursor: pointer;
   transition: 0.3s linear;
-  background: linear-gradient(103deg, #5b77ff 0%, #002bff 100%);
-  box-shadow: -10px 20px 60px rgba(0, 43, 255, 0.2);
+  background: linear-gradient(103deg, #f9a94b 0%, #c67618 100%);
+  box-shadow: -10px 20px 60px rgba(148, 88, 18, 0.2);
   border-radius: 30px;
 }
 button:hover {
