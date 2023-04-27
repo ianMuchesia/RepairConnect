@@ -1,5 +1,5 @@
-import { handshake, idea, timetable } from '../../assets'
-import './home.css'
+import { handshake, idea, timetable } from '../../../assets'
+import '../home.css'
 
 
 const servicesData = [

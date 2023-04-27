@@ -1,5 +1,5 @@
-import { StartShopImg } from "../../assets"
-import "./home.css"
+import { StartShopImg } from "../../../assets"
+import "../home.css"
 
 const StartShop = () => {
   return (

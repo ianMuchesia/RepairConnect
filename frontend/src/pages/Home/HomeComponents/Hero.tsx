@@ -1,5 +1,5 @@
-import { hero } from "../../assets"
-import "./home.css"
+import { hero } from "../../../assets"
+import "../home.css"
 import {AiOutlineArrowRight} from "react-icons/ai"
 
 const Hero = () => {

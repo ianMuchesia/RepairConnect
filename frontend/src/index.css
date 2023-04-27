@@ -160,3 +160,6 @@ button:hover {
     color-scheme: dark;
   }
 }
+.wrapper{
+  min-height: calc(100vh - (113px));
+}

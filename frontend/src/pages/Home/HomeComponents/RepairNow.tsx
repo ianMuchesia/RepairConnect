@@ -1,5 +1,5 @@
-import { RepairNowImg } from "../../assets"
-import "./home.css"
+import { RepairNowImg } from "../../../assets"
+import "../home.css"
 
 const RepairNow = () => {
   return (
