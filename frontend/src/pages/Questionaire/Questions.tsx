@@ -63,7 +63,7 @@ const Questions = () => {
         event.preventDefault()
         console.log(answers)
         console.log(selectedAnswers)
-        navigate('/signup', { state: { isTechnician: true } });
+        navigate('/TechnicianSignUp', { state: { isTechnician: true } });
       }
 
       

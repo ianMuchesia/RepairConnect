@@ -13,6 +13,7 @@ const Profile = () => {
       <BsLayoutSidebarInsetReverse  className="sidebar-icons"/>
       <h5>menu</h5>
     </div>
+    <div className="profile-wrapper">
    <div className={`${sidebar?"":"hide-sidebar"}`}>
 <Sidebar setSideBar={setSideBar}/>
    </div>
@@ -23,6 +24,7 @@ const Profile = () => {
             <Route path="/Chat" element={<Chat />} />
             <Route path="/Notification" element={<Notification />} />
   </Routes>
+   </div>
    </div>
    </section>
   )
