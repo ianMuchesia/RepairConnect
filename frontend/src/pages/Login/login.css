@@ -2,10 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 .loginContainer {
     display: grid;
     max-width: 700px;
+    
 
     
 }
@@ -66,10 +68,15 @@
 border-radius: 5px;
 min-width: 50%;
 }
+.signUpLink{
+    font-weight: 500;
+    color: var(--orange-600);
+}
 
 @media screen and (min-width:560px) {
     .loginContainer{
         grid-template-columns: 1fr 1fr;
+        max-height: 80%;
         
 
     }

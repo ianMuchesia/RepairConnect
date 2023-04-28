@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { login } from "../../assets"
 import "./login.css"
 
@@ -35,6 +36,7 @@ const Login = () => {
         </div>
         <p>Forgot Password?</p>
         <button>Login</button>
+        <p>New User? <span className="signUpLink"><Link to="/SignUp">Sign Up</Link></span></p>
       </form>
       </div>
       

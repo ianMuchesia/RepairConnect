@@ -158,6 +158,9 @@ button:hover {
 input:focus{
 outline: none;
 }
+textarea:focus{
+  outline: none;
+  }
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
