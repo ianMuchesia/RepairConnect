@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,  useEffect } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../Login/login.css";
@@ -15,9 +15,11 @@ const TechnicianSignUp = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isTechnician = location.state?.isTechnician;
-  if (!isTechnician) {
-    navigate("/Questions");
-  }
+ useEffect(()=>{
+    if (!isTechnician) {
+        navigate("/Questions");
+      }
+ },[])
 
   const [signUpForm, setSignUpForm] = useState({
     name: "",
