@@ -1,5 +1,11 @@
+const {BadRequestError} = require("../errors")
+
 const getTechnician = async(req, res)=>{
-    res.send("here i am")
+    const {name} = req.body
+    if(!name){
+        throw new BadRequestError("here iam")
+    }
+    res.send("hello world")
 }
 
 
