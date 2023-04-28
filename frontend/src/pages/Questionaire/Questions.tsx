@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { QuestionImage } from "../../assets";
 import "./questions.css";
 
@@ -39,6 +40,8 @@ const questionCheckBox:Question[] = [
   {id: 4, quiz: "Have you ever provided substandard service to a customer?" },
 ];
 const Questions = () => {
+
+    const navigate = useNavigate()
     const [answers, setAnswers] = useState(
         questionsTextData.map(() => "")
       );
@@ -60,6 +63,7 @@ const Questions = () => {
         event.preventDefault()
         console.log(answers)
         console.log(selectedAnswers)
+        navigate('/signup', { state: { isTechnician: true } });
       }
 
       

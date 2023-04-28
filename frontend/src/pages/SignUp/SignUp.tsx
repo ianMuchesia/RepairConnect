@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { login } from "../../assets"
 import "../Login/login.css"
 
 const SignUp = () => {
+
+  const location = useLocation()
+  const isTechnician = location.state?.isTechnician;
+  console.log(isTechnician)
+
   return (
     <section className="login-section">
     <div className="loginContainer">
@@ -13,7 +18,7 @@ const SignUp = () => {
       </h4>
       <p>Welcome, Please Sign up to open your account</p>
       <div className="form-input">
-        <label htmlFor="name">User Name</label>
+        <label htmlFor="name">{isTechnician? "Technician":"User"} Name</label>
         <input 
         type="text"
         name="name"
@@ -21,7 +26,7 @@ const SignUp = () => {
         placeholder="User Name" />
       </div>
       <div className="form-input">
-        <label htmlFor="email">User Email</label>
+        <label htmlFor="email">{isTechnician? "Technician":"User"} Email</label>
         <input 
         type="email"
         name="email"
@@ -37,7 +42,7 @@ const SignUp = () => {
       </div>
       
       <button>Sign Up</button>
-      <p>Already have an Account? <span className="signUpLink"><Link to="/Login">Log in</Link></span></p>
+     {!isTechnician && <p>Already have an Account? <span className="signUpLink"><Link to="/Login">Log in</Link></span></p>}
     </form>
     <div className="loginImageContainer"
      >
