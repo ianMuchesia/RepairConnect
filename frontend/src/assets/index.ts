@@ -5,8 +5,9 @@ import idea from './idea.png'
 import timetable from './timetable.png'
 import RepairNowImg from './RepairNow.jpg'
 import StartShopImg from './StartShop.jpg'
+import login from "./login.jpg"
 
 
 export {
-    hero,logo, handshake, idea, timetable, RepairNowImg, StartShopImg
+    hero,logo,login, handshake, idea, timetable, RepairNowImg, StartShopImg
 }

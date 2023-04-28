@@ -1,8 +1,46 @@
-
+import { login } from "../../assets"
+import "./login.css"
 
 const Login = () => {
   return (
-    <section>Login</section>
+    <section className="login-section">
+      <div className="loginContainer">
+        <div className="loginImageContainer"
+       >
+    <img src={login} alt="login-image" />
+    <div className="absoluteloginImage">
+      <h2>Welcome Back!</h2>
+      <h4>to RepairConnect</h4>
+    </div>
+        </div>
+        <form className="formLogin">
+        <h4>Login
+
+        </h4>
+        <p>Welcome Back Please login to your account</p>
+        <div className="form-input">
+          <label htmlFor="email">User Email</label>
+          <input 
+          type="email"
+          name="email"
+          id="email"
+          placeholder="username@email.com" />
+        </div>
+        <div className="form-input">
+          <label htmlFor="password">Password</label>
+          <input type="password"
+          name="password"
+          id="password"
+         />
+        </div>
+        <p>Forgot Password?</p>
+        <button>Login</button>
+      </form>
+      </div>
+      
+
+      
+    </section>
   )
 }
 

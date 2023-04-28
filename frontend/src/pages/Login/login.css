@@ -1,0 +1,80 @@
+.login-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginContainer {
+    display: grid;
+    max-width: 700px;
+
+    
+}
+.loginImageContainer{
+    display:none;
+    position: relative;
+   
+}
+.loginImageContainer img{
+    height: auto;
+    max-width: 100%;
+    z-index: -1;
+}
+.absoluteloginImage{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    background: rgba(252, 212, 165, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(17,17,17,0.8);
+    flex-direction: column;
+    
+
+}
+.formLogin{
+    background: var(--grey-400);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap:1.5em; 
+    align-items: flex-start;
+    justify-content: center;
+    border: none;
+    box-shadow: -1px 3px 5px 0px rgba(252, 212, 165, 0.75);
+    -webkit-box-shadow: -1px 3px 5px 0px rgba(252, 212, 165, 0.75);
+    -moz-box-shadow: -1px 3px 5px 0px rgba(252, 212, 165, 0.75);
+
+}
+.formLogin p{
+    font-weight: 300;
+}
+.form-input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.form-input input{
+    padding: 0.5em 1em;
+    font-size: 1rem;
+}
+
+.formLogin button{
+border-radius: 5px;
+min-width: 50%;
+}
+
+@media screen and (min-width:560px) {
+    .loginContainer{
+        grid-template-columns: 1fr 1fr;
+        
+
+    }
+    .loginImageContainer{
+        display: block;
+        
+    }
+}
