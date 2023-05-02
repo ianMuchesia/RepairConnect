@@ -17,13 +17,11 @@ const TechnicianSchema = new Schema(
         "please provie valid email",
       ],
       unique: true,
+      required: [true, "Please provide email"],
     },
     description: {
       type: String,
-      required: [
-        true,
-        "Please provide a little description of you and your shop",
-      ],
+      required: [true,"Please provide a little description of you and your shop"],
       maxlength: [1000, "Description can not be more than 1000 characters"],
     },
     password: {
@@ -31,8 +29,13 @@ const TechnicianSchema = new Schema(
       required: [true, "please provide password"],
       minlength: 6,
     },
-    avatar: { type: String },
-    shop: { type: String, required: [true, "Please provide your shop name"] },
+    avatar: {
+      type: String,
+    },
+    shop: {
+      type: String,
+      required: [true, "Please provide your shop name"],
+    },
     shopImages: {
       type: [String],
       required: [true, "Please provide at least one shop image"],
@@ -45,11 +48,15 @@ const TechnicianSchema = new Schema(
     },
     averageRating: {
       type: Number,
-      default: 0,
+      default: 3,
     },
     numOfReviews: {
       type: Number,
       default: 0,
+    },
+    location: {
+      type: String,
+      required: [true, "Location is required"],
     },
   },
   { timestamps: true }

@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "tippy.js/dist/tippy.css";
 import TechnicianDetails from "./TechnicianDetails";
 import ShopDetails from "./ShopDetails";
+import axios from "axios";
 
 const TechnicianSignUp = () => {
   const location = useLocation();
@@ -24,14 +25,14 @@ const TechnicianSignUp = () => {
     password: "",
     confirmPassword: "",
     avatar: "",
-    shopImage: "",
+    shopImages: "",
     description: "",
     shopName: "",
     location: "",
   });
 
   const handleSignUpFormChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setSignUpForm((prevForm) => ({
       ...prevForm,
@@ -48,10 +49,11 @@ const TechnicianSignUp = () => {
         [event.target.name]: reader.result as string,
       }));
     };
+   
     reader.readAsDataURL(file as Blob);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const {
       name,
@@ -60,18 +62,18 @@ const TechnicianSignUp = () => {
       password,
       confirmPassword,
       location,
-      shopImage,
+      shopImages,
       shopName,
+      description,
     } = signUpForm;
 
-    
     if (
       !name ||
       !email ||
       !avatar ||
       !password ||
       !location ||
-      !shopImage ||
+      !shopImages ||
       !shopName
     ) {
       toast.error("Please fill all the inputs");
@@ -80,6 +82,29 @@ const TechnicianSignUp = () => {
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       return;
+    }
+    
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3000/api/v1/technicians/auth/register",
+        {
+          avatar,
+          name,
+          email,
+          location,
+          password,
+          description,
+          shopImages,
+          shopName
+        }
+      );
+
+      if (data.success) {
+        toast.success("Done!");
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

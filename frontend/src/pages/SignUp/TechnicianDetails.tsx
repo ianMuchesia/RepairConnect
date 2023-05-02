@@ -8,7 +8,7 @@ interface Props {
     password: string;
     confirmPassword: string;
     avatar: string;
-    shopImage: string;
+    shopImages: string;
     description: string;
     shopName: string;
     location: string;

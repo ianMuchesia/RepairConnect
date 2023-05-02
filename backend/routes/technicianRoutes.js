@@ -1,9 +1,9 @@
 const express = require("express")
-const { getTechnician } = require("../controllers/technician")
+const {  registerTechnician, getAllTechnician } = require("../controllers/technicianController")
 
 const router = express.Router()
 
-router.get("/", getTechnician)
-
+router.post("/register", registerTechnician)
+router.get("/", getAllTechnician)
 
 module.exports = router

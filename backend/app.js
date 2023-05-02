@@ -13,6 +13,8 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
+const bodyParser = require('body-parser');
+
 
 
 //database
@@ -38,9 +40,11 @@ app.use(cors({ origin: process.env.CLIENT_SIDE_URL, credentials: true}));
 app.use(xss());
 app.use(mongoSanitize());
 
-app.use(express.json())
-app.use(cookieParser(process.env.JWT_SECRET));
 
+app.use(cookieParser(process.env.JWT_SECRET));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.json())
 
 //routes
 app.use('/api/v1/technicians', technicianRoute)

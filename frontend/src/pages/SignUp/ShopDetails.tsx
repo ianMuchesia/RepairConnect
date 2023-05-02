@@ -8,44 +8,42 @@ interface Props {
     password: string;
     confirmPassword: string;
     avatar: string;
-    shopImage: string;
+    shopImages: string;
     description: string;
     shopName: string;
     location: string;
   };
-  handleSignUpFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSignUpFormChange: (event:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
   handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ShopDetails = ({
-    signUpForm,
-    handleFileUpload,
-    handleSignUpFormChange,
-  }: Props) => {
+  signUpForm,
+  handleFileUpload,
+  handleSignUpFormChange,
+}: Props) => {
   return (
     <div className="shop-details">
-          <h4>Shop Details</h4>
- <div className="avatar-wrapper">
-  
-
-    <div className="shop-wrapper">
+      <h4>Shop Details</h4>
+      <div className="avatar-wrapper">
+        <div className="shop-wrapper">
           <div className="shop-image-container">
             <label>
-              {signUpForm.shopImage === "" ? (
+              {signUpForm.shopImages === "" ? (
                 <>
                   <div className="upper-section">
                     <AiOutlineCloudUpload className="upload-icon" />
                     <p className="text-lg">upload shop image</p>
                   </div>
                   <p className="text-recommend">
-                    Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF
-                    or TIFF less than 20MB
+                    Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or
+                    TIFF less than 20MB
                   </p>
                 </>
               ) : (
                 <Tippy content="Click to upload image">
                   <img
-                    src={signUpForm.shopImage}
+                    src={signUpForm.shopImages}
                     alt="Uploaded file preview"
                     className="shop-image"
                   />
@@ -53,13 +51,13 @@ const ShopDetails = ({
               )}
               <input
                 type="file"
-                name="shopImage"
+                name="shopImages"
                 onChange={handleFileUpload}
               />
             </label>
           </div>
-          </div>
-          <div className="input-settings">
+        </div>
+        <div className="input-settings">
           <label htmlFor="shopName">Shop Name</label>
           <input
             type="text"
@@ -87,13 +85,16 @@ const ShopDetails = ({
           <textarea
             id="description"
             placeholder="Write Something about your Shop"
+            name="description"
+            value={signUpForm.description}
+            onChange={handleSignUpFormChange}
             rows={15}
             cols={30}
           />
         </div>
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShopDetails
+export default ShopDetails;
