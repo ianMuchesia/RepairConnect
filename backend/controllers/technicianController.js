@@ -68,6 +68,6 @@ const registerTechnician = async (req, res) => {
 
 const getAllTechnician = async(req, res)=>{
   const technicians = await Technician.find({})
-  res.status(StatusCodes.OK).json({success: true , technicians})
+  res.status(StatusCodes.OK).json({success: true , nbHits:technicians.length,technicians})
 }
 module.exports = { registerTechnician , getAllTechnician};

@@ -32,7 +32,9 @@ const TechnicianSignUp = () => {
   });
 
   const handleSignUpFormChange = (
-    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setSignUpForm((prevForm) => ({
       ...prevForm,
@@ -49,7 +51,7 @@ const TechnicianSignUp = () => {
         [event.target.name]: reader.result as string,
       }));
     };
-   
+
     reader.readAsDataURL(file as Blob);
   };
 
@@ -83,10 +85,10 @@ const TechnicianSignUp = () => {
       toast.error("Passwords do not match");
       return;
     }
-    
+
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/v1/technicians/auth/register",
+        "http://localhost:3000/api/v1/technicians/register",
         {
           avatar,
           name,
@@ -95,16 +97,32 @@ const TechnicianSignUp = () => {
           password,
           description,
           shopImages,
-          shopName
+          shopName,
         }
       );
 
       if (data.success) {
-        toast.success("Done!");
-        console.log(data);
+        toast.success("Registration was successful");
+
+        setSignUpForm({
+          name: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+          avatar: "",
+          shopImages: "",
+          description: "",
+          shopName: "",
+          location: "",
+        });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error.response.data) {
+        toast.error(error.response.data.msg);
+        return;
+      }
+      toast.error("Something wrong happened try again later");
     }
   };
 
