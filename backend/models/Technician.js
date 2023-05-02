@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const TechnicianSchema = new Schema(
@@ -54,6 +54,10 @@ const TechnicianSchema = new Schema(
       type: Number,
       default: 0,
     },
+    role: {
+      type: String,
+      default: "technician",
+    },
     location: {
       type: String,
       required: [true, "Location is required"],
@@ -75,6 +79,18 @@ TechnicianSchema.virtual("reviews", {
 TechnicianSchema.pre("remove", async function (next) {
   await this.model("Review").deleteMany({ technician: this._id });
 });
+
+TechnicianSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return;
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
+
+TechnicianSchema.methods.comparePassword = async function (candidatePassword) {
+  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+  return isMatch;
+};
 
 const Technician = mongoose.model("Technician", TechnicianSchema);
 

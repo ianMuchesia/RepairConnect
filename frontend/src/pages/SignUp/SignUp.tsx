@@ -1,17 +1,75 @@
+import {useState} from 'react'
 import { Link } from "react-router-dom";
 import { login } from "../../assets";
 import "../Login/login.css";
+import { ToastContainer, toast } from "react-toastify";
+import { baseURL } from '../../Api';
+import axios from 'axios';
 
 const SignUp = () => {
+
+
+  const [ signUpForm , setSignUpForm] = useState({
+    name:"",
+    email:"",
+    password:"",
+    confirmPassword:"",
+  })
+
+  const handleChange= (event:React.ChangeEvent<HTMLInputElement>)=>{
+    setSignUpForm(prevForm=>({
+      ...prevForm,
+      [event.target.name]:event.target.value
+    }))
+  }
+
+  const handleSubmit =async(event:React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault()
+    const {name, email, password, confirmPassword} = signUpForm
+    if(!name ||!email || !password ||!confirmPassword){
+      toast.warn("please fill all the inputs")
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    try {
+      const {data} = await axios.post(`${baseURL}auth/registerUser`,{
+        name,email, password
+      })
+      if(data.success){
+        toast.success("Registration was successful");
+
+        setSignUpForm({
+          name: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+       
+        });
+      }
+    } catch (error:any) {
+      console.log(error);
+      if (error.response.data.msg) {
+        toast.error(error.response.data.msg);
+        return;
+      }
+      toast.error("Something wrong happened try again later");
+    }
+    }
+  
   return (
     <section className="login-section">
+      <ToastContainer/>
       <div className="loginContainer">
-        <form className="formLogin">
+        <form className="formLogin" onSubmit={handleSubmit}>
           <h4>Sign Up</h4>
           <p>Welcome, Please Sign up to open your account</p>
           <div className="form-input">
             <label htmlFor="name">User Name</label>
-            <input type="text" name="name" id="name" placeholder="User Name" />
+            <input type="text" name="name" id="name" placeholder="User Name"
+            value={signUpForm.name}
+            onChange={handleChange} />
           </div>
           <div className="form-input">
             <label htmlFor="email">User Email</label>
@@ -20,11 +78,21 @@ const SignUp = () => {
               name="email"
               id="email"
               placeholder="username@email.com"
+              value={signUpForm.email}
+            onChange={handleChange}
             />
           </div>
           <div className="form-input">
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password"
+            value={signUpForm.password}
+            onChange={handleChange} />
+          </div>
+          <div className="form-input">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword"
+             value={signUpForm.confirmPassword}
+             onChange={handleChange}/>
           </div>
 
           <button>Sign Up</button>

@@ -88,7 +88,7 @@ const TechnicianSignUp = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/v1/technicians/register",
+        "http://localhost:3000/api/v1/auth/registerTechnician",
         {
           avatar,
           name,

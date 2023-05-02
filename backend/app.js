@@ -21,7 +21,8 @@ const bodyParser = require('body-parser');
 const connectDB = require('./database/connectDB')
 
 //routers
-const technicianRoute = require('./routes/technicianRoutes')
+const authRouter = require('./routes/authRoutes')
+const technicianRouter = require('./routes/technicianRoutes')
 
 //middleware
 const notFoundMiddleWare = require('./middleware/not-found')
@@ -47,7 +48,8 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.json())
 
 //routes
-app.use('/api/v1/technicians', technicianRoute)
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/technicians', technicianRouter)
 
 
 app.use(errorHandlerMiddleWare)
