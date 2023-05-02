@@ -1,14 +1,24 @@
+import {useEffect} from'react'
+import ScrollToTop from "./utils/scrollToTop";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Footer, Navbar } from "./components"
 import { Home, Login, Profile, Questions, SignUp, TechnicianSignUp } from "./pages"
 import "./index.css"
+import { useAppDispatch } from "./ReduxHooks"
+import checkAuthentication from "./store/authCheck"
 
 
 function App() {
-  
+
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(checkAuthentication());
+  }, []);
+
 
   return (
     <BrowserRouter>
+    <ScrollToTop/>
     <Navbar/>
     <main className="wrapper">
     <Routes>
