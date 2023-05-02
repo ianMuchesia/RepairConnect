@@ -135,7 +135,7 @@ SideBar and Profile
 Settings
 ===============
 */
-.settings-wrapper{
+/*.settings-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -233,4 +233,4 @@ Settings
         flex-direction: row;
         justify-content: space-around;
     }
-}
+}*/

@@ -92,41 +92,49 @@ Settings
 ===============
 */
 .technician-form{
-    padding:2em
+    padding:2em;
 }
-.settings-wrapper{
+.technician-details{
+    padding: 1em 0em;
+}
+.shop-details{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap:1.5em;
 }
-.details-settings{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap:1.54em;
+.shop-details>h4{
+    text-align: center;
 }
-.name-settings{
+.technician-details>h4{
+    text-align: center;
+}
+
+.input-settings{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     
 }
-.name-settings input{
-    padding: 0.4em 1em;
+.input-settings input{
+    padding: 1em 1em;
     font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--orange-100);
 }
 .description-textarea{
     display: flex;
     flex-direction: column;
     align-items: flex-start;  
 }
-.description-textarea textarea{
+.description-textarea > textarea{
     padding: 0.4em 1em;
     font-size: 1rem;
     width: 100%; 
-    font-family: "Montserrat", sans-serif;;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--orange-100);
 }
 .avatar-wrapper{
     display: flex;
@@ -134,6 +142,7 @@ Settings
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5em;
+    gap:1em
 }
 .avatar-container{
     background: var(--grey-700);
@@ -157,22 +166,29 @@ Settings
     height: 0;
     width: 0;
 }
-
-.upload-container{
+.shop-wrapper{
     display: flex;
     flex-direction: column;
-    background-color: var(--grey-700);
     align-items: center;
     justify-content: center;
-    max-width: 300px;
-    height: 300px;
+    margin-bottom: 1.5em;
+}
+.shop-image-container{
+    display: flex;
+ 
+     background-color: var(--grey-600); 
+    align-items: center;
+    justify-content: center;
+    max-width: 200px;
+    height: 200px;
     padding: 1.5em 0.5em;
     border: 2px dotted var(--grey-900);
+    margin: 1em 0em;
 
 }
 .shop-image{
-    max-width: 300px;
-    height: 300px;
+    max-width: 200px;
+    height: 200px;
 }
 .upper-section{
     display: flex;
@@ -184,13 +200,13 @@ Settings
 .upload-icon{
     font-size: 5rem;
 }
-.upload-container input{
+.shop-wrapper input{
     height: 0;
     width: 0;
 }
 
 .text-recommend{
-    font-size: 0.75rem;
+    font-size: 0.5rem;
     text-align: center;
     margin-top: 2rem;
 }
@@ -203,7 +219,18 @@ Settings
 @media screen and (min-width:800px) {
 
     .settings-wrapper{
+        display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        align-items: flex-start;
+    }
+    .avatar-wrapper{
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 1.5em;
+    }
+    .input-settings input{
+        min-width: 80%;
     }
 }
