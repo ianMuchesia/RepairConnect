@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 const Technician = require("../models/Technician");
-const User = require("../models/User");
+const User = require("../models/Customer");
 
 
 const getAllTechnician = async(req, res)=>{

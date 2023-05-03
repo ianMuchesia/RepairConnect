@@ -23,7 +23,7 @@ const connectDB = require('./database/connectDB')
 //routers
 const authRouter = require('./routes/authRoutes')
 const technicianRouter = require('./routes/technicianRoutes')
-const userRouter = require('./routes/userRoutes')
+/* const customerRouter = require('./routes/customerRoutes') */
 //middleware
 const notFoundMiddleWare = require('./middleware/not-found')
 const errorHandlerMiddleWare = require('./middleware/error-handler')
@@ -50,7 +50,7 @@ app.use(express.json())
 //routes
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/technicians', technicianRouter)
-app.use('/api/v1/user', userRouter)
+/* app.use('/api/v1/customer', customerRouter) */
 
 
 app.use(errorHandlerMiddleWare)

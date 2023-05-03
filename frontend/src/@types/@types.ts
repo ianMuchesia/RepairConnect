@@ -9,3 +9,10 @@ export interface Technician {
   shopName: string;
   location: string;
 }
+
+
+export interface userAuth {
+  name: string;
+  userId: string;
+  role:string;
+}

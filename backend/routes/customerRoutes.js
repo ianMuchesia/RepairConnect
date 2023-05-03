@@ -1,5 +1,5 @@
-const express = require("express")
-const { showUser } = require("../controllers/userController")
+/* const express = require("express")
+const { showUser } = require("../controllers/customerController")
 const { authenticateUser } = require("../middleware/authentication")
 
 const router = express.Router()
@@ -7,4 +7,4 @@ const router = express.Router()
 
 router.get("/showMe",authenticateUser, showUser)
 
-module.exports = router
+module.exports = router */

@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema(
+const CustomerSchema = new Schema(
   {
    
     name: {
@@ -32,8 +32,8 @@ const UserSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["admin", "user"],
-      default: "user",
+      enum: ["admin", "customer"],
+      default: "customer",
     },
     phone: {
       type: String,
@@ -50,7 +50,7 @@ const UserSchema = new Schema(
 
 
 
-UserSchema.pre("save", async function (next) {
+CustomerSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
@@ -58,11 +58,11 @@ UserSchema.pre("save", async function (next) {
 });
 
 
-UserSchema.methods.comparePassword = async function (candidatePassword) {
+CustomerSchema.methods.comparePassword = async function (candidatePassword) {
   const isMatch = await bcrypt.compare(candidatePassword, this.password);
   return isMatch;
 };
 
-const User = mongoose.model("User", UserSchema);
+const Customer = mongoose.model("Customer", CustomerSchema);
 
-module.exports = User;
+module.exports = Customer;

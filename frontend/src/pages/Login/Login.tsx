@@ -1,12 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../assets";
 import "./login.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { baseURL } from "../../Api";
 import axios from "axios";
+import { useAppDispatch } from "../../ReduxHooks";
+import { setIsAuthenticated } from "../../store/authSlice";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch()
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -28,21 +32,41 @@ const Login = () => {
     }
 
     try {
-      const { data } = await axios.post(`${baseURL}auth/login`, {
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        `${baseURL}auth/login`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true, timeout: 5000 }
+      );
+      console.log(data)
       if (data.success) {
         toast.success("Login successful!");
+
+        const {name , userId , role} = data.user
+        dispatch(setIsAuthenticated({
+            name,
+            userId,
+            role
+        }))
 
         setLoginForm({
           email: "",
           password: "",
         });
+      
+        setTimeout(()=>{
+          navigate('/Profile')
+        }, 2000)
       }
     } catch (error: any) {
       console.log(error);
-      if (error.response.data.msg) {
+      if (error.code === "ECONNABORTED") {
+        // handle timeout error
+        toast.error("Request timed out. Please try again later.");
+      }
+      if (error.response?.data?.msg) {
         toast.error(error.response.data.msg);
         return;
       }
