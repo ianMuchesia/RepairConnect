@@ -65,6 +65,7 @@ const Login = () => {
       if (error.code === "ECONNABORTED") {
         // handle timeout error
         toast.error("Request timed out. Please try again later.");
+        return
       }
       if (error.response?.data?.msg) {
         toast.error(error.response.data.msg);

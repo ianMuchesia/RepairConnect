@@ -106,7 +106,7 @@ const login = async (req, res) => {
       throw new NotFoundError(`no account found with email: ${email}`)
     }
     if(customer){
-      console.log("Customer")
+     
       const isPasswordCorrect = await Customer.comparePassword(password);
 
       if (!isPasswordCorrect) {
@@ -122,7 +122,7 @@ const login = async (req, res) => {
     }
     if(technician){
      
-      console.log("yess")
+     
       const isPasswordCorrect = await technician.comparePassword(password);
 
       if (!isPasswordCorrect) {

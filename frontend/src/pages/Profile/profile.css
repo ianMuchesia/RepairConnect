@@ -127,7 +127,61 @@ SideBar and Profile
 
 
 
-
+/*
+=============== 
+Info
+===============
+*/
+.info-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.info-name-container > h2,
+.info-name-container > h3,
+.info-section > .info-details-container > h5{
+    font-family: var( --bodyFont);
+    font-weight: 400;
+  
+}
+.info-details-container{
+    display: grid;
+    gap:1.5em
+}
+.info-details-container span{
+    font-family: var(--headingFont);
+    font-weight: 500;
+    color: var(--orange-500);
+    font-size: 1.2rem;
+    
+   
+}
+.info-name-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+.info-avatar{
+    height:100%;
+    max-width: 100%;
+    border-radius: 50%;
+}
+.info-avatar img{
+    max-height:400px;
+    max-width: 100%;
+    object-fit: cover;
+}
+@media screen and (min-width:800px) {
+    .info-section{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+   
+}
 
 
   /*

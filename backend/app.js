@@ -49,7 +49,7 @@ app.use(express.json())
 
 //routes
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/technicians', technicianRouter)
+app.use('/api/v1/technician', technicianRouter)
 /* app.use('/api/v1/customer', customerRouter) */
 
 
