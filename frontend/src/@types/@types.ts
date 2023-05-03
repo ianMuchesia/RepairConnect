@@ -5,7 +5,7 @@ export interface Technician {
   avatar: string;
   shopImage: string;
   description: string;
-  shopName: string;
+  shop: string;
   location: string;
 }
 
@@ -18,7 +18,6 @@ export interface userAuth {
 export interface Customer {
   name: string;
   email: string;
-
   avatar: string;
   role:string;
   location: string;

@@ -218,7 +218,7 @@ Settings
 
 @media screen and (min-width:800px) {
 
-    .settings-wrapper{
+    .details-wrapper{
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;

@@ -4,28 +4,28 @@ import { AiOutlineCloudUpload } from "react-icons/ai"
 const Settings = () => {
   return (
     <form>
-    <div className="settings-wrapper">
-      <div className="details-settings">
-        <div className="name-settings">
+    <div className="profile-settings-wrapper">
+      <div className="profile-details-settings">
+        <div className="profile-name-settings">
           <label htmlFor="name">Name</label>
           <input type="text"
           id="name" placeholder="Your name"
            />
         </div>
-        <div className="name-settings">
+        <div className="profile-name-settings">
           <label htmlFor="email">Email</label>
           <input type="email"
           id="email" placeholder="yourname@email.com"
            />
         </div>
-        <div className="name-settings">
+        <div className="profile-name-settings">
           <label htmlFor="">Shop Name</label>
           <input type="text"
           id="shopName" placeholder="Your name"
            />
         </div>
 
-        <div className="description-textarea">
+        <div className="profile-description-textarea">
           <label htmlFor="">Description</label>
           <textarea 
           id="shopName" placeholder="Write Something about yourself"
@@ -34,14 +34,14 @@ const Settings = () => {
         </div>
        
       </div>
-      <div className="images-container">
-        <div className="avatar-wrapper">
+      <div className="profile-images-container">
+        <div className="profile-avatar-wrapper">
         <h4>Avatar Upload</h4>
-        <div className="avatar-container">
+        <div className="profile-avatar-container">
           <label>
-          <div className="upper-section">
-              <AiOutlineCloudUpload className="upload-icon"/>
-              <p className="text-lg">Click to upload</p>
+          <div className="profile-upper-section">
+              <AiOutlineCloudUpload className="profile-upload-icon"/>
+              <p className="profile-text-lg">Click to upload</p>
             </div>
           <input
               type="file"
@@ -53,15 +53,15 @@ const Settings = () => {
         </div>
         </div>
 
-        <div className="upload-wrapper">
+        <div className="profile-upload-wrapper">
           <h4>Shop Image Upload</h4>
-        <div className="upload-container">
+        <div className="profile-upload-container">
           <label>
-            <div className="upper-section">
-              <AiOutlineCloudUpload className="upload-icon"/>
-              <p className="text-lg">Click to upload</p>
+            <div className="profile-upper-section">
+              <AiOutlineCloudUpload className="profile-upload-icon"/>
+              <p className="profile-text-lg">Click to upload</p>
             </div>
-            <p className="text-recommend">
+            <p className="profile-text-recommend">
                 Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or TIFF less than 20MB
               </p>
               <input
@@ -76,7 +76,7 @@ const Settings = () => {
       </div>
       
     </div>
-    <div className="settings-btn">
+    <div className="profile-settings-btn">
 
     <button>SAVE</button>
     </div>

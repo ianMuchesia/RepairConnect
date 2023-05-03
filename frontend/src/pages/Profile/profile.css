@@ -175,6 +175,14 @@ Info
     max-width: 100%;
     object-fit: cover;
 }
+.edit-info-btn-container{
+    margin: 1em 0em;
+    display: grid;
+    place-items: center;
+}
+.edit-info-btn{
+    padding: 0.4em 2em;
+}
 @media screen and (min-width:800px) {
     .info-section{
         flex-direction: row;
@@ -189,48 +197,48 @@ Info
 Settings
 ===============
 */
-/*.settings-wrapper{
+.profile-settings-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap:1.5em;
 }
-.details-settings{
+.profile-details-settings{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap:1.54em;
 }
-.name-settings{
+.profile-name-settings{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     
 }
-.name-settings input{
+.profile-name-settings input{
     padding: 0.4em 1em;
     font-size: 1rem;
 }
-.description-textarea{
+.profile-description-textarea{
     display: flex;
     flex-direction: column;
     align-items: flex-start;  
 }
-.description-textarea textarea{
+.profile-description-textarea textarea{
     padding: 0.4em 1em;
     font-size: 1rem;
     width: 100%; 
     font-family: "Montserrat", sans-serif;;
 }
-.avatar-wrapper{
+.profile-avatar-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5em;
 }
-.avatar-container{
+.profile-avatar-container{
     background: var(--grey-700);
     height: 200px;
     width: 200px;
@@ -239,12 +247,12 @@ Settings
     align-items: center;
     justify-content: center;
 }
-.avatar-container input{
+.profile-avatar-container input{
     height: 0;
     width: 0;
 }
 
-.upload-container{
+.profile-upload-container{
     display: flex;
     flex-direction: column;
     background-color: var(--grey-700);
@@ -255,27 +263,27 @@ Settings
     border: 2px dotted var(--grey-900);
 
 }
-.upper-section{
+.profile-upper-section{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.upload-icon{
+.profile-upload-icon{
     font-size: 5rem;
 }
-.upload-container input{
+.profile-upload-container input{
     height: 0;
     width: 0;
 }
 
-.text-recommend{
+.profile-text-recommend{
     font-size: 0.75rem;
     text-align: center;
     margin-top: 2rem;
 }
-.settings-btn{
+.profile-settings-btn{
     display: grid;
     place-items: center;
     margin-top: 2em;
@@ -283,8 +291,8 @@ Settings
 
 @media screen and (min-width:800px) {
 
-    .settings-wrapper{
+    .profile-settings-wrapper{
         flex-direction: row;
         justify-content: space-around;
     }
-}*/
+}

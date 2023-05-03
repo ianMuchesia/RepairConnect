@@ -82,7 +82,7 @@ const Navbar = () => {
      
      
         
-      {authState.isAuthenticated?<Link to={`/${authState.user.userId}`} className="Login">
+      {authState.isAuthenticated?<Link to={`/Profile`} className="Login">
         <div className="profile-navbar">
           <img src={userNavbarImage} alt="profile" className="profile-image-navbar" />
           <p>{authState.user.name}</p>

@@ -130,7 +130,7 @@ const TechnicianSignUp = () => {
     <form className="technician-form" onSubmit={handleSubmit}>
       <ToastContainer />
       <h3>Sign Up to Get started</h3>
-      <div className="settings-wrapper">
+      <div className="details-wrapper">
         <TechnicianDetails
           signUpForm={signUpForm}
           handleSignUpFormChange={handleSignUpFormChange}
