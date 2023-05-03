@@ -121,6 +121,7 @@ const login = async (req, res) => {
       res.status(StatusCodes.CREATED).json({ success: true, tokenUser });
     }
     if(technician){
+     
       console.log("yess")
       const isPasswordCorrect = await technician.comparePassword(password);
 
@@ -133,7 +134,7 @@ const login = async (req, res) => {
       attachCookiesToResponse({res, user:tokenTechnician})
   
   
-      res.status(StatusCodes.CREATED).json({ success: true, tokenTechnician });
+      res.status(StatusCodes.CREATED).json({ success: true, tokenTechnician }); 
     }
    
 }
