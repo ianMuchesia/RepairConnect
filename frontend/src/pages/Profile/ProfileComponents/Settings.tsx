@@ -1,13 +1,16 @@
-import { AiOutlineCloudUpload } from "react-icons/ai"
+import { Customer, Technician } from "../../../@types/@types";
 import ImageUploader from "./ImageUploader"
 import SettingsInputs from "./SettingsInputs"
+interface Props{
+  userProfile: Technician; 
+}
 
+const Settings = ({userProfile}:Props) => {
 
-const Settings = () => {
   return (
     <form>
     <div className="profile-settings-wrapper">
-     <SettingsInputs/>
+     <SettingsInputs userProfile={userProfile}/>
       <div className="profile-images-container">
       <h2>Shop Images</h2>
       <p>you can add upto 5 images</p>

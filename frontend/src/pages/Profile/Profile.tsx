@@ -74,7 +74,7 @@ const Profile = () => {
           <div className="profileContainer">
             <Routes>
               <Route path="/" element={<Info userProfile={userProfile} />} />
-              <Route path="/Settings" element={<Settings />} />
+              <Route path="/Settings" element={<Settings userProfile={userProfile as Technician}/>} />
               <Route path="/Chat" element={<Chat />} />
               <Route path="/Notification" element={<Notification />} />
             </Routes>
