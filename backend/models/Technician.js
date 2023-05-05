@@ -58,9 +58,21 @@ const TechnicianSchema = new Schema(
       type: String,
       default: "technician",
     },
-    location: {
-      type: String,
-      required: [true, "Location is required"],
+    location:{
+      type:String,
+      enum: {
+        values: [
+          "Kizingo",
+          "Majengo",
+          "Likoni",
+          "Bamburi",
+          "Kisauni",
+          "Magongo",
+          "Mikindani",
+          "Nyali",
+        ],
+        message: "{VALUE} is not supported",
+      },
     },
   },
   { timestamps: true }

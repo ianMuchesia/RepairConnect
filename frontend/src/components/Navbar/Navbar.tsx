@@ -82,13 +82,17 @@ const Navbar = () => {
      
      
         
-      {authState.isAuthenticated?<Link to={`/Profile`} className="Login">
+      {authState.isAuthenticated?
+      <div className='authenticated-div'>
+      <Link to={`/Profile`} className="Login">
         <div className="profile-navbar">
           <img src={userNavbarImage} alt="profile" className="profile-image-navbar" />
           <p>{authState.user.name}</p>
         </div>
         
-      </Link>: <Link to="Login" className="Login">
+      </Link>
+      <button onClick={handleLogOut}>Log Out</button>
+      </div>: <Link to="Login" className="Login">
         {" "}
         <button>Login</button>{" "}
       </Link>}

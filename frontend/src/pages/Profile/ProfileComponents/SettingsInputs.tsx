@@ -79,6 +79,15 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
         onChange={handleChange}
          />
       </div>
+      <div className="profile-name-settings">
+        <label htmlFor="location">Location</label>
+        <input type="location"
+        id="location" placeholder="location"
+        name='location'
+        value={updateForm.location || ""}
+        onChange={handleChange}
+         />
+      </div>
 
       <div className="profile-description-textarea">
         <label htmlFor="">Description</label>

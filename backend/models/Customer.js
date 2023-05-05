@@ -39,6 +39,22 @@ const CustomerSchema = new Schema(
       type: String,
       default: "+254",
     },
+    location:{
+      type:String,
+      enum: {
+        values: [
+          "Kizingo",
+          "Majengo",
+          "Likoni",
+          "Bamburi",
+          "Kisauni",
+          "Magongo",
+          "Mikindani",
+          "Nyali",
+        ],
+        message: "{VALUE} is not supported",
+      },
+    },
     bio: {
       type: String,
       default: "bio",

@@ -12,6 +12,7 @@ interface Props {
     avatar: string;
     shop: string;
     description: string;
+    shopImages:string[];
   };
   handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleChange: (
@@ -25,12 +26,13 @@ interface Props {
   ) => void;
 }
 const ImageUploader = ({
-  userProfile,
+
   handleFileUpload,
-  handleChange,
+ 
   handleFilesUpload,
+  updateForm
 }: Props) => {
-  const { shopImages } = userProfile;
+  const { shopImages } = updateForm;
 
   if (shopImages === undefined) {
     return <h2>Something wrong happened, try again later</h2>;
@@ -38,25 +40,26 @@ const ImageUploader = ({
 
   const MAX_IMAGES = 5;
   const numOfImages = shopImages.length;
+
   const emptySlots = MAX_IMAGES - numOfImages;
 
   return (
     <div className="profile-images-uploader-container">
       {shopImages.map((image, index) => (
-        <div className="profile-upload-wrapper" key={index}>
-          <div className="profile-upload-container">
-            <label>
+        
+       
+            <label className="profile-shop-image-wrapper" key={index}>
               <Tippy content="Click to upload image">
                 <img
                   src={image}
                   alt="Uploaded file preview"
-                  className="shop-image"
+                  className="profile-shop-images"
                 />
               </Tippy>
               <input type="file" name="avatar" onChange={handleFileUpload} />
             </label>
-          </div>
-        </div>
+         
+       
       ))}
 
       {emptySlots > 0 &&
@@ -74,12 +77,12 @@ const ImageUploader = ({
                   Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or
                   TIFF less than 20MB
                 </p>
-                </>:
+                </>
                
                 <input
                   type="file"
                   name={`shop-image-${index}`}
-                  onChange={(event) => handleFilesUpload(event, index)}
+                  onChange={(event) => handleFilesUpload(event, index + numOfImages)}
                 />
               </label>
             </div>

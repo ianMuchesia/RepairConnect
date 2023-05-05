@@ -90,6 +90,12 @@ nav li:not(:first-child):not(:last-child):hover{
   height: 30px;
   max-width: 100%;
 }
+.authenticated-div{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap:1em;
+}
 @keyframes navbar {
     0% {
       opacity: 0;
@@ -138,6 +144,10 @@ nav li:not(:first-child):not(:last-child):hover{
       height: auto;
       width: 7rem;
       
+  }
+  .authenticated-div{
+    display: flex;
+  
   }
     
     

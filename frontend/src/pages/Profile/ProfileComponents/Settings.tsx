@@ -41,20 +41,23 @@ const Settings = ({ userProfile }: Props) => {
   };
 
   const handleFilesUpload = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+   
     const file = event.target.files?.[0];
-    const reader = new FileReader();
+    const reader = new FileReader(); 
     reader.onloadend = () => {
       setUpdateForm((prevForm) => {
         const updatedShopImages = [...prevForm.shopImages];
+      
         updatedShopImages[index] = reader.result as string;
+        
         return {
           ...prevForm,
           shopImages: updatedShopImages,
         };
       });
     };
-    reader.readAsDataURL(file as Blob);
-    console.log(updateForm.shopImages)
+     reader.readAsDataURL(file as Blob); 
+    
   };
   return (
     <form>
