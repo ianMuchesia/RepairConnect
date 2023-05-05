@@ -32,7 +32,7 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
       <h4>Avatar Upload</h4>
       <div className="profile-avatar-container">
         <label>
-       {userProfile.avatar==="" || userProfile.avatar === undefined ? (<><div className="profile-upper-section">
+       {updateForm.avatar ===""? (<><div className="profile-upper-section">
             <AiOutlineCloudUpload className="profile-upload-icon"/>
             <p className="profile-text-lg">Click to upload</p>
             <p className="profile-text-lg">Profile</p>
@@ -74,6 +74,7 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
         onChange={handleChange}
          />
       </div>
+   
     {userProfile.role === 'technician' &&  <div className="profile-name-settings">
         <label htmlFor="">Shop Name</label>
         <input type="text"
