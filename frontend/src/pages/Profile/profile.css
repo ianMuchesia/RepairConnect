@@ -220,6 +220,10 @@ Settings
     padding: 0.4em 1em;
     font-size: 1rem;
 }
+.profile-name-settings select{
+    padding: 0.4em 1em;
+    font-size: 1rem;
+}
 .profile-description-textarea{
     display: flex;
     flex-direction: column;

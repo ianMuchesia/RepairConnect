@@ -31,6 +31,7 @@ const TechnicianSchema = new Schema(
     },
     avatar: {
       type: String,
+      default:'',
     },
     shop: {
       type: String,
@@ -75,7 +76,7 @@ const TechnicianSchema = new Schema(
       },
     },
   },
-  { timestamps: true }
+  { timestamps: true }, { minimize: false }
 );
 
 // This virtual field allows the reviews associated with a technician to be accessed in a more convenient way, without having to manually search the 'Review' model for reviews with a matching technicianID.

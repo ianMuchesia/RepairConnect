@@ -56,6 +56,8 @@ const Profile = () => {
     };
   }, [authState.user.role]);
 
+  
+
   return (
     <section className="profile">
       <div className="sidebar-toggle" onClick={() => setSideBar(true)}>

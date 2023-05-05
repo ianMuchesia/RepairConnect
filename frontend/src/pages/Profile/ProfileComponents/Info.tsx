@@ -24,6 +24,7 @@ const Info = ({userProfile}:Props) => {
       <div className="info-details-container">
         <h5><span>Email adress: </span>{email}</h5>
         <h5><span>Phone Number: </span>+2571000000</h5>
+        <h5><span>Location: </span>{location?location:"Location not provided yet"}</h5>
         {role === 'technician' && <h5><span>Shop Name: </span>{shop}</h5>}
         {role === 'technician' && <div className=""><h5><span>About: </span></h5>
         <p>{description}.</p>

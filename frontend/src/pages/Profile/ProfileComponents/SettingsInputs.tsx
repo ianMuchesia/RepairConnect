@@ -1,6 +1,7 @@
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import Tippy from "@tippyjs/react";
 import { Technician } from '../../../@types/@types';
+import { SelectLocation } from '../../../utils/selectLocation';
 interface Props{
   userProfile: Technician; 
   updateForm: {
@@ -13,13 +14,15 @@ interface Props{
 };
 handleChange: (event:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
 handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
+handleChangeSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 
 }
 
-const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange}:Props) => {
+const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange, handleChangeSelect}:Props) => {
  
 
 
+  console.log(userProfile?.avatar)
 
   
 
@@ -29,9 +32,10 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
       <h4>Avatar Upload</h4>
       <div className="profile-avatar-container">
         <label>
-       {userProfile.avatar === ""? (<><div className="profile-upper-section">
+       {userProfile.avatar==="" || userProfile.avatar === undefined ? (<><div className="profile-upper-section">
             <AiOutlineCloudUpload className="profile-upload-icon"/>
             <p className="profile-text-lg">Click to upload</p>
+            <p className="profile-text-lg">Profile</p>
           </div>
           </> ):
           <Tippy content="Click to upload image">
@@ -53,7 +57,7 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
       </div>
       </div>
       <div className="profile-name-settings">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Full Name</label>
         <input type="text"
         id="name" placeholder="Your name"
         name='name'
@@ -70,7 +74,7 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
         onChange={handleChange}
          />
       </div>
-      <div className="profile-name-settings">
+    {userProfile.role === 'technician' &&  <div className="profile-name-settings">
         <label htmlFor="">Shop Name</label>
         <input type="text"
         id="shopName" placeholder="Your name"
@@ -78,18 +82,21 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
         value={updateForm.shop || ""}
         onChange={handleChange}
          />
-      </div>
+      </div>}
       <div className="profile-name-settings">
         <label htmlFor="location">Location</label>
-        <input type="location"
+        <select 
         id="location" placeholder="location"
         name='location'
         value={updateForm.location || ""}
-        onChange={handleChange}
-         />
+        onChange={handleChangeSelect}
+         >
+          <option value="">Select a location</option>
+          {SelectLocation.map((location, index) => <option key={index} value={location}>{location}</option>)}
+         </select>
       </div>
 
-      <div className="profile-description-textarea">
+     {userProfile.role === 'technician' &&  <div className="profile-description-textarea">
         <label htmlFor="">Description</label>
         <textarea 
         id="shopName" placeholder="Write Something about yourself"
@@ -98,7 +105,7 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
         name='description'
         value={updateForm.description || ""}
         onChange={handleChange}/>
-      </div>
+      </div>}
      
     </div>
   )

@@ -6,6 +6,6 @@ const router = express.Router()
 
 
 router.get("/", getAllCustomer)
-router.get('/:id',authenticateUser, getSingleCustomer)
+router.get('/:id',authenticateUser ,getSingleCustomer)
 
 module.exports = router 

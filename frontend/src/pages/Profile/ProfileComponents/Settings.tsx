@@ -21,11 +21,18 @@ const Settings = ({ userProfile }: Props) => {
     shopImages:shopImages
   });
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>|React.ChangeEvent<HTMLTextAreaElement>)=>{
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>|React.ChangeEvent<HTMLTextAreaElement> |React.ChangeEvent<HTMLSelectElement>)=>{
     setUpdateForm(prevForm=>({
       ...prevForm,
       [e.target.name]:e.target.value
     }))
+  }
+
+  const handleChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setUpdateForm(prevForm => ({
+      ...prevForm,
+      [e.target.name]: e.target.value
+    }));
   }
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -67,10 +74,10 @@ const Settings = ({ userProfile }: Props) => {
           updateForm={updateForm}
           handleChange={handleChange}
           handleFileUpload={handleFileUpload}
-          
+          handleChangeSelect={handleChangeSelect}
        
         />
-        <div className="profile-images-container">
+       {role === 'technician' && <div className="profile-images-container">
           <h2>Shop Images</h2>
           <p>you can add upto 5 images</p>
 
@@ -82,7 +89,7 @@ const Settings = ({ userProfile }: Props) => {
           handleFilesUpload={handleFilesUpload}
            
           />
-        </div>
+        </div>}
       </div>
       <div className="profile-settings-btn">
         <button>SAVE</button>
