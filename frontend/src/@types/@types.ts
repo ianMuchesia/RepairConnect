@@ -3,7 +3,7 @@ export interface Technician {
   email: string;
   role:string;
   avatar: string;
-  shopImage: string;
+  shopImages: string[];
   description: string;
   shop: string;
   location: string;

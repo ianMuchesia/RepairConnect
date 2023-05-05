@@ -1,4 +1,5 @@
 const express = require("express")
+
 const {  login, logout, registerTechnician, registerCustomer, showUser } = require("../controllers/authController")
 const { authenticateUser } = require("../middleware/authentication")
 

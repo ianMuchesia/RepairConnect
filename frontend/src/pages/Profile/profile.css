@@ -247,6 +247,13 @@ Settings
     align-items: center;
     justify-content: center;
 }
+.profile-avatar-container img{
+    /* margin: 0.4em; */
+    height: 210px;
+    width: 210px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 .profile-avatar-container input{
     height: 0;
     width: 0;

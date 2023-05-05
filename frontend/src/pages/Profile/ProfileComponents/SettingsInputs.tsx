@@ -1,43 +1,52 @@
 import { AiOutlineCloudUpload } from 'react-icons/ai'
-import {useState} from 'react'
+import Tippy from "@tippyjs/react";
 import { Technician } from '../../../@types/@types';
 interface Props{
   userProfile: Technician; 
+  updateForm: {
+    name: string;
+    location: string;
+    email: string;
+    avatar: string;
+    shop: string;
+    description: string;
+};
+handleChange: (event:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
+handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
 }
 
-const SettingsInputs = ({userProfile}:Props) => {
-   const {name , location, email, role, shop, description, avatar} = userProfile 
+const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange}:Props) => {
  
-console.log(userProfile)
-  const [updateForm,setUpdateForm ] = useState({
-    name:name,
-    location:location,
-    email:email,
-   avatar:role,
-    shop:shop,
-    description:description
-  })
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>|React.ChangeEvent<HTMLTextAreaElement>)=>{
-    setUpdateForm(prevForm=>({
-      ...prevForm,
-      [e.target.name]:e.target.value
-    }))
-  }
+
+
+  
+
   return (
     <div className="profile-details-settings">
     <div className="profile-avatar-wrapper">
       <h4>Avatar Upload</h4>
       <div className="profile-avatar-container">
         <label>
-        <div className="profile-upper-section">
+       {userProfile.avatar === ""? (<><div className="profile-upper-section">
             <AiOutlineCloudUpload className="profile-upload-icon"/>
             <p className="profile-text-lg">Click to upload</p>
           </div>
+          </> ):
+          <Tippy content="Click to upload image">
+          <img
+            src={updateForm.avatar}
+            alt="Uploaded file preview"
+            className="shop-image"
+            
+           
+          />
+        </Tippy>}
         <input
             type="file"
-            name="upload-avatar"
-            
+            name="avatar"
+            onChange={handleFileUpload}
         
           />
         </label>

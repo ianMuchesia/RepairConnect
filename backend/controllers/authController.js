@@ -107,7 +107,7 @@ const login = async (req, res) => {
     }
     if(customer){
      
-      const isPasswordCorrect = await Customer.comparePassword(password);
+      const isPasswordCorrect = await customer.comparePassword(password);
 
       if (!isPasswordCorrect) {
           throw new UnauthenticatedError("password and email did not match")
