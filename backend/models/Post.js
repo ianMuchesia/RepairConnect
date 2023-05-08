@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { BadRequestError } = require('../errors');
 
 
 
@@ -44,14 +45,7 @@ const PostSchema = new Schema ({
       type: String,
       maxlength: [1000, "Notes can not be more than 1000 characters"],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now
-    },
-    updatedAt: {
-      type: Date,
-      default: Date.now
-    },
+
     image:{
         type:String,
 
@@ -59,10 +53,19 @@ const PostSchema = new Schema ({
     otherImages:{
         type:[String],
     }
-  })
+  }, {timestamps:true})
 
-  PostSchema.index({ technician: 1, customer: 1 }, { unique: true });
+  PostSchema.index({ owner: 1, "bids.technician": 1 }, { unique: true });
 
+
+  // ensure each technician can only bid once per post
+PostSchema.pre('save', function (next) {
+  const technicianIds = this.bids.map(bid => bid.technician.toString());
+  if (technicianIds.length !== new Set(technicianIds).size) {
+    throw new BadRequestError('Each technician can only bid once per post')
+  }
+  next();
+});
   
 const Post = mongoose.model('Post',PostSchema )
 
