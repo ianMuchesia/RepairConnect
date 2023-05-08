@@ -1,7 +1,7 @@
 const Post = require("../models/Post");
 const { StatusCodes } = require("http-status-codes");
 const { checkPermission } = require("../utils");
-const { BadRequestError, NotFoundError } = require("../errors");
+const { BadRequestError, NotFoundError, UnauthenticatedError } = require("../errors");
 
 
 
@@ -41,6 +41,15 @@ const getSinglePost = async(req, res)=>{
 
     }
     res.status(StatusCodes.OK).json({ success: true, post });
+}
+
+
+const getSingleUserPosts = async(req, res)=>{
+  const {userId} = req.user
+
+  const posts = await Post.find({owner:userId})
+
+  res.status(StatusCodes.OK).json({success:true , posts})
 }
 
 
@@ -102,15 +111,16 @@ const createBid = async (req, res) => {
 const getAllBids = async(req , res)=>{
     
     const {id:postID} = req.params
-    checkPermission(req.user , req.user.userId)
+    const {userId} = req.user
+    checkPermission(req.user , userId)
 
-    const bids = await Post.findOne({_id:postID}).select('bids')
+    const bids = await Post.findOne({_id:postID, owner:userId}).select('bids')
 
     if(!bids){
         throw new NotFoundError(`no post found with id:${postID}`); 
     }
 
-    res.status(StatusCodes.OK).json({success:true})
+    res.status(StatusCodes.OK).json({success:true, bids})
 
 
 } 
@@ -119,44 +129,59 @@ const getAllBids = async(req , res)=>{
 
 const getSingleBid = async (req, res) => {
     const { id: postID, bidID } = req.params;
+
+
+   
     checkPermission(req.user, req.user.userId);
-  
-    const post = await Post.findOne({ _id: postID }).select('bids');
-  
+    const post = await Post.findOne({
+      _id: postID,
+      $or: [
+        { owner: req.user.userId },
+        { bids: { $elemMatch: { technician: req.user.userId } } }
+      ]
+    }).select('bids');
+    
     if (!post) {
       throw new NotFoundError(`No post found with id: ${postID}`);
     }
-  
-    //id() is a method provided by Mongoose to find a subdocument by its _id
-    const bid = post.bids.id(bidID);
-  
+    
+    // Find the bid that matches the bidID parameter
+    const bid = post.bids.find(bid => bid._id.toString() === bidID);
+    
     if (!bid) {
       throw new NotFoundError(`No bid found with id: ${bidID} on post ${postID}`);
     }
-  
+    
+    // Check if the bid belongs to the technician making the request
+    if (bid.technician.toString() !== req.user.userId) {
+      throw new UnauthenticatedError(`You are not authorized to access this bid`);
+    }
+    
     res.status(StatusCodes.OK).json({ success: true, bid });
+    
   };
   
 
 
 
 const deleteBid = async(req, res)=>{
-    const { id: postId } = req.params;
-    const {bidId} = req.body
-
+    const { id: postId, bidID } = req.params;
+ 
 
     checkPermission(req.user , req.user.userId)
 
     const post = await Post.findOneAndUpdate(
-        postId,
-        { $pull: {bids:{_id:bidId}}},
-        {new:true}
+        
+        {_id:postId, bids: { $elemMatch: { technician: req.user.userId, _id:bidID } } },
+       { $pull: {bids:{_id:bidID}}},
+       { projection: { bids: { $elemMatch: { _id: bidID } } } }
 
     )
+    // The $ is a placeholder that tells Mongoose to return the matched array element.
 
     if(!post){
         throw new NotFoundError(`no post found with id:${postId}`)
     }
-    res.status(StatusCodes.OK).json({success:true})
+    res.status(StatusCodes.OK).json({success:true, msg:"Bid Deleted"})
 }
-module.exports = { getAllPosts, createPost , createBid, deletePost, deleteBid, getSingleBid ,getAllBids , getSingleBid};
+module.exports = { getAllPosts,getSinglePost, createPost , createBid, deletePost, deleteBid, getSingleBid ,getAllBids , getSingleBid, getSingleUserPosts};
