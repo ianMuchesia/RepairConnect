@@ -5,33 +5,33 @@ const {
   BadRequestError,
   NotFoundError,
   UnauthenticatedError,
+  ForbiddenError,
 } = require("../errors");
 
 //post
 
 const createPost = async (req, res) => {
-try {
-  
-  const { item, description } = req.body;
+  try {
+    const { item, description } = req.body;
 
-  if (!item || !description) {
-    throw new BadRequestError("Please provide all values");
+    if (!item || !description) {
+      throw new BadRequestError("Please provide all values");
+    }
+
+    checkPermission(req.user, req.user.userId);
+
+    const post = await Post.create({
+      item,
+      description,
+      customer: req.user.userId,
+    });
+
+    console.log("here i am");
+
+    res.status(StatusCodes.CREATED).json({ success: true });
+  } catch (error) {
+    console.log(error);
   }
-
-  checkPermission(req.user, req.user.userId);
-
-  const post = await Post.create({
-    item,
-    description,
-    customer:req.user.userId
-  });
-
-  console.log("here i am")
-
-  res.status(StatusCodes.CREATED).json({ success: true });
-} catch (error) {
-  console.log(error)
-}
 };
 
 const getAllPosts = async (req, res) => {
@@ -89,6 +89,10 @@ const createBid = async (req, res) => {
     throw new NotFoundError(`no post found with id:${postID}`);
   }
 
+  if (post.status !== "open") {
+    throw new ForbiddenError("Bidding closed");
+  }
+
   post.bids.push({
     technician: technicianId,
     amount,
@@ -99,9 +103,6 @@ const createBid = async (req, res) => {
 
   res.status(StatusCodes.CREATED).json({ success: true });
 };
-
-
-
 
 const getAllBids = async (req, res) => {
   const { id: postID } = req.params;
@@ -118,10 +119,6 @@ const getAllBids = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ success: true, bids });
 };
-
-
-
-
 
 const getSingleBid = async (req, res) => {
   const { id: postID, bidID } = req.params;
@@ -154,11 +151,9 @@ const getSingleBid = async (req, res) => {
   res.status(StatusCodes.OK).json({ success: true, bid });
 };
 
-
 const acceptBid = async (req, res) => {
   const { id: postID, bidID } = req.params;
 
-  
   const post = await Post.findOne({
     _id: postID,
   }).select("technician bids");
@@ -166,43 +161,44 @@ const acceptBid = async (req, res) => {
   if (!post) {
     throw new NotFoundError(`post with id:${postID} not found`);
   }
-  const bid = post.bids.find((item) => item._id === bidID);
+
+  const bid = post.bids.find((item) => item._id.toString() === bidID);
 
   if (!bid) {
     throw new NotFoundError(`No bid found with id: ${bidID} on post ${postID}`);
   }
 
-  checkPermission(req.user, req.user.userId)
-  post.accepted = true
-  bid.bidAccepted = true
+  checkPermission(req.user, req.user.userId);
+  post.accepted = true;
+  post.status = "closed";
+  bid.bidAccepted = true;
 
-  await post.save()
+  await post.save();
 
-  res.status(StatusCodes.OK).json({success:true , msg:"Success!"})
+  res.status(StatusCodes.OK).json({ success: true, msg: "Success!" });
 };
-
-
-
 
 const deleteBid = async (req, res) => {
   const { id: postId, bidID } = req.params;
 
   checkPermission(req.user, req.user.userId);
 
-  const post = await Post.findOneAndUpdate(
-    {
-      _id: postId,
-      bids: { $elemMatch: { technician: req.user.userId, _id: bidID } },
-    },
-    { $pull: { bids: { _id: bidID } } },
-    { projection: { bids: { $elemMatch: { _id: bidID } } } }
-  );
-  // The $ is a placeholder that tells Mongoose to return the matched array element.
+  const post = await Post.findOne({
+    _id: postId,
+    bids: { $elemMatch: { technician: req.user.userId , _id: bidID } },
+  });
 
   if (!post) {
-    throw new NotFoundError(`no post found with id:${postId}`);
+    throw new NotFoundError(`No post found with id:${postId}`);
   }
-  res.status(StatusCodes.OK).json({ success: true, msg: "Bid Deleted" });
+
+   await Post.findOneAndUpdate(
+    { _id: postId },
+    { $pull: { bids: { _id: bidID } } },
+    { new: true }
+  );
+
+  res.status(StatusCodes.OK).json({ success: true, msg: "Bid Deleted"});
 };
 module.exports = {
   getAllPosts,
@@ -215,6 +211,5 @@ module.exports = {
   getAllBids,
   getSingleBid,
   getSingleUserPosts,
-  acceptBid
-
+  acceptBid,
 };

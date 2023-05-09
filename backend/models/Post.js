@@ -67,7 +67,8 @@ const PostSchema = new Schema(
 
 PostSchema.index(
   { "bids.technician": 1 },
-  { unique: true, partialFilterExpression: { "bids.technician": { $exists: true } } }
+  { unique:true, 
+    partialFilterExpression: { "bids.technician": { $exists: true } } }
 );
 
 // ensure each technician can only bid once per post
@@ -79,10 +80,12 @@ PostSchema.pre("save", function (next) {
     throw new BadRequestError("Each technician can only bid once per post");
   }
 
-  const acceptedBid = this.bids.find((bid) => bid.accepted);
+ /*  const post = this
+  const acceptedBid = post.bids.find((bid) => bid.accepted);
+  console.log(acceptedBid)
   if (acceptedBid) {
-    this.status = "closed";
-  }
+    post.status = "closed";
+  } */
   next();
 });
 
