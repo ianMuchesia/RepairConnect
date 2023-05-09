@@ -10,7 +10,8 @@ const {
 //post
 
 const createPost = async (req, res) => {
-  req.body.owner = req.user.userId;
+try {
+  
   const { item, description } = req.body;
 
   if (!item || !description) {
@@ -18,9 +19,19 @@ const createPost = async (req, res) => {
   }
 
   checkPermission(req.user, req.user.userId);
-  const post = await Post.create(req.body);
+
+  const post = await Post.create({
+    item,
+    description,
+    customer:req.user.userId
+  });
+
+  console.log("here i am")
 
   res.status(StatusCodes.CREATED).json({ success: true });
+} catch (error) {
+  console.log(error)
+}
 };
 
 const getAllPosts = async (req, res) => {
@@ -89,6 +100,9 @@ const createBid = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ success: true });
 };
 
+
+
+
 const getAllBids = async (req, res) => {
   const { id: postID } = req.params;
   const { userId } = req.user;
@@ -104,6 +118,10 @@ const getAllBids = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ success: true, bids });
 };
+
+
+
+
 
 const getSingleBid = async (req, res) => {
   const { id: postID, bidID } = req.params;
@@ -136,6 +154,36 @@ const getSingleBid = async (req, res) => {
   res.status(StatusCodes.OK).json({ success: true, bid });
 };
 
+
+const acceptBid = async (req, res) => {
+  const { id: postID, bidID } = req.params;
+
+  
+  const post = await Post.findOne({
+    _id: postID,
+  }).select("technician bids");
+
+  if (!post) {
+    throw new NotFoundError(`post with id:${postID} not found`);
+  }
+  const bid = post.bids.find((item) => item._id === bidID);
+
+  if (!bid) {
+    throw new NotFoundError(`No bid found with id: ${bidID} on post ${postID}`);
+  }
+
+  checkPermission(req.user, req.user.userId)
+  post.accepted = true
+  bid.bidAccepted = true
+
+  await post.save()
+
+  res.status(StatusCodes.OK).json({success:true , msg:"Success!"})
+};
+
+
+
+
 const deleteBid = async (req, res) => {
   const { id: postId, bidID } = req.params;
 
@@ -167,4 +215,6 @@ module.exports = {
   getAllBids,
   getSingleBid,
   getSingleUserPosts,
+  acceptBid
+
 };

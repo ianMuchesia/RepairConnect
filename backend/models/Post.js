@@ -1,73 +1,91 @@
-const mongoose = require('mongoose');
-const { BadRequestError } = require('../errors');
+const mongoose = require("mongoose");
+const { BadRequestError } = require("../errors");
 
+const Schema = mongoose.Schema;
 
-
-const Schema = mongoose.Schema
-
-
-const PostSchema = new Schema ({
+const PostSchema = new Schema(
+  {
     item: {
       type: String,
-      required: true
+      required: true,
     },
-    description:{
-      type:String,
-      required:true,
+    description: {
+      type: String,
+      required: true,
       maxlength: [1000, "Description can not be more than 1000 characters"],
     },
-    owner:{
-      type:mongoose.Schema.ObjectId,
+    customer: {
+      type: mongoose.Schema.ObjectId,
       ref: "Customer",
-      required:true,
+      required: true,
     },
-    bids: [{
-      technician: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Technician"
+    bids: [
+      {
+        technician: {
+          type: mongoose.Schema.ObjectId,
+          ref: "Technician",
+        },
+        amount: {
+          type: Number,
+          required: true,
+        },
+        bidMessage: {
+          type: String,
+          required: true,
+          maxlength: [1000, "Description can not be more than 1000 characters"],
+        },
+
+        bidAccepted: {
+          type: Boolean,
+          default: false,
+        },
       },
-      amount: {
-        type: Number,
-        required: true
-      },
-      bidMessage:{
-        type:String,
-        required:true,
-        maxlength: [1000, "Description can not be more than 1000 characters"],
-      }
-    }],
+    ],
     status: {
       type: String,
       enum: ["open", "closed", "expired", "completed"],
-      default: "open"
+      default: "open",
     },
     notes: {
       type: String,
       maxlength: [1000, "Notes can not be more than 1000 characters"],
     },
 
-    image:{
-        type:String,
-
+    image: {
+      type: String,
     },
-    otherImages:{
-        type:[String],
-    }
-  }, {timestamps:true})
+    accepted: {
+      type: Boolean,
+      default: false,
+    },
+    otherImages: {
+      type: [String],
+    },
+  },
+  { timestamps: true }
+);
 
-  PostSchema.index({ owner: 1, "bids.technician": 1 }, { unique: true });
+PostSchema.index(
+  { "bids.technician": 1 },
+  { unique: true, partialFilterExpression: { "bids.technician": { $exists: true } } }
+);
 
-
-  // ensure each technician can only bid once per post
-PostSchema.pre('save', function (next) {
-  const technicianIds = this.bids.map(bid => bid.technician.toString());
+// ensure each technician can only bid once per post
+PostSchema.pre("save", function (next) {
+  const technicianIds = this.bids
+    .filter((bid) => !!bid.technician)
+    .map((bid) => bid.technician.toString());
   if (technicianIds.length !== new Set(technicianIds).size) {
-    throw new BadRequestError('Each technician can only bid once per post')
+    throw new BadRequestError("Each technician can only bid once per post");
+  }
+
+  const acceptedBid = this.bids.find((bid) => bid.accepted);
+  if (acceptedBid) {
+    this.status = "closed";
   }
   next();
 });
-  
-const Post = mongoose.model('Post',PostSchema )
 
-module.exports = Post
-  
+const Post = mongoose.model("Post", PostSchema);
+
+module.exports = Post;

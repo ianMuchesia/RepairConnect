@@ -24,4 +24,12 @@ const getSingleTechnician = async(req, res)=>{
 
   res.status(StatusCodes.OK).json({success: true , user:technician})
 }
+
+
+const getAllTechnicians = async(req, res)=>{
+
+  const technicians = await Technician.find({}).select('-password')
+  res.status(StatusCodes.OK).json({success:true , technicians})
+  
+}
 module.exports = { getAllTechnician , getSingleTechnician};

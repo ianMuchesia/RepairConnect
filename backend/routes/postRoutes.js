@@ -14,6 +14,7 @@ const {
   getSinglePost,
   getAllBids,
   getSingleUserPosts,
+  acceptBid,
 } = require("../controllers/postController");
 
 const router = express.Router();
@@ -46,7 +47,16 @@ router.post(
   authorizePermission("technician"),
   createBid
 );
+
+
 router.patch(
+  "/:id/bid/:bidID",
+  authenticateUser,
+  authorizePermission("customer"),
+  acceptBid
+);
+
+router.delete(
   "/:id/bid/:bidID",
   authenticateUser,
   authorizePermission("technician"),
