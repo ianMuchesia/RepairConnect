@@ -1,11 +1,13 @@
-const express = require("express")
-const {   getAllTechnician, getSingleTechnician } = require("../controllers/technicianController")
-const { authenticateUser } = require("../middleware/authentication")
+const express = require("express");
+const {
+  getSingleTechnician,
+  getAllTechnicians,
+} = require("../controllers/technicianController");
+const { authenticateUser } = require("../middleware/authentication");
 
-const router = express.Router()
+const router = express.Router();
 
+router.get("/", getAllTechnicians);
+router.get("/:id", authenticateUser, getSingleTechnician);
 
-router.get("/", getAllTechnician)
-router.get("/:id",authenticateUser, getSingleTechnician)
-
-module.exports = router
+module.exports = router;

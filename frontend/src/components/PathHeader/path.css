@@ -1,0 +1,14 @@
+.paths{
+    margin: 1em 0em;
+    padding: 1.8em 0.5em;
+    background: var(--orange-300);
+}
+.paths-container{
+    display: flex;
+    margin: 0em 1em;
+}
+
+.paths-container h4{
+    font-weight: 500;
+
+}

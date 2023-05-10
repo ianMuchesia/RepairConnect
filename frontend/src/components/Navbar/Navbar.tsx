@@ -63,9 +63,13 @@ const Navbar = () => {
           <li onClick={closeToggle}>
             <Link to="/">Home</Link>
           </li>
+          {authState.isAuthenticated && <li onClick={closeToggle}>
+            <Link to="/Shops">Shops</Link>
+          </li>}
           <li onClick={closeToggle}>
             <Link to="/">Services</Link>
           </li>
+
           <li onClick={closeToggle}>
             <Link to="/">About</Link>
           </li>
