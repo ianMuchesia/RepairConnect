@@ -7,6 +7,7 @@ export interface Technician {
   description: string;
   shop: string;
   location: string;
+  _id:string;
 }
 
 export interface userAuth {

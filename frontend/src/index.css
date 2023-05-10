@@ -161,6 +161,14 @@ outline: none;
 textarea:focus{
   outline: none;
   }
+
+  select:focus{
+    border: none;
+  }
+
+  select:hover {
+    background-color: var(--orange-200);
+  }
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

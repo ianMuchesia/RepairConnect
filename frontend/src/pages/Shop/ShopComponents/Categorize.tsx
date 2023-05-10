@@ -1,7 +1,15 @@
 
 import { SelectLocation } from '../../../utils/selectLocation'
 
-const Categorize = () => {
+
+interface Props{
+    search:string;
+    setSearch:React.Dispatch<React.SetStateAction<string>>;
+    setSelectedCategory:React.Dispatch<React.SetStateAction<string>>;
+}
+const Categorize = (props :Props) => {
+
+    const {search, setSearch , setSelectedCategory} = props
   return (
     <div className="shop-categorize">
     <input type="text"
