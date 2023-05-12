@@ -20,7 +20,7 @@ const attachCookiesToResponse = ({ res, user }) => {
     res.cookie('token', token, {
       httpOnly: true,
       expires: new Date(Date.now() + threeDays),
-      secure:  process.env.NODE_ENV !== 'production',
+      secure:  process.env.NODE_ENV === 'production',
       signed: true,
       sameSite:"none", //because of different hosting environment
     });

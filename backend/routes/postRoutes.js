@@ -1,79 +1,16 @@
-const express = require("express");
-
-const {
-  authenticateUser,
-  authorizePermission,
-} = require("../middleware/authentication");
-const {
-  createPost,
-  createBid,
-  deletePost,
-  deleteBid,
-  getSingleBid,
-  getAllPosts,
-  getSinglePost,
-  getAllBids,
-  getSingleUserPosts,
-  acceptBid,
-} = require("../controllers/postController");
-
-const router = express.Router();
-
-router.get("/", authenticateUser, getAllPosts);
-router.get(
-  "/myPosts",
-  authenticateUser,
-  authorizePermission("customer"),
-  getSingleUserPosts
-);
-router.post("/", authenticateUser, authorizePermission("customer"), createPost);
-router.delete(
-  "/:id",
-  authenticateUser,
-  authorizePermission("customer"),
-  deletePost
-);
-
-router.get(
-  "/:id/bid",
-  authenticateUser,
-  authorizePermission("customer"),
-  getAllBids
-);
-
-router.post(
-  "/:id/bid/",
-  authenticateUser,
-  authorizePermission("technician"),
-  createBid
-);
 
 
-router.patch(
-  "/:id/bid/:bidID",
-  authenticateUser,
-  authorizePermission("customer"),
-  acceptBid
-);
+const express = require('express')
+const { createPost, getPosts, updatePost, deletePost, getSinglePost } = require('../controllers/postController')
+const { authenticateUser, authorizePermission} = require('../middleware/authentication')
 
-router.delete(
-  "/:id/bid/:bidID",
-  authenticateUser,
-  authorizePermission("technician"),
-  deleteBid
-);
+const router = express.Router()
 
 
+router.post('/',authenticateUser, authorizePermission('customer'), createPost)
+router.get('/',authenticateUser,  getPosts)
+router.patch('/:id',authenticateUser, authorizePermission('customer'), updatePost)
+router.delete('/:id',authenticateUser, authorizePermission('customer'), deletePost)
+router.get('/:id',authenticateUser, authorizePermission('customer'), getSinglePost)
 
-
-
-router.get(
-  "/:id/bid/:bidID",
-  authenticateUser,
-  authorizePermission("technician", "customer"),
-  getSingleBid
-);
-
-router.get("/:id", authenticateUser, getSinglePost);
-
-module.exports = router;
+module.exports = router

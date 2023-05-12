@@ -171,6 +171,9 @@
 }
 
 @media screen and (min-width: 1000px) {
+    .shop-sort-layout{
+        margin-left: 2em;
+    }
     .shop-sort h5{
         display: block;
     }

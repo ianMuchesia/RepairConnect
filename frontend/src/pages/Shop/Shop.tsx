@@ -35,6 +35,7 @@ const Shop = () => {
         if(isMounted){
          
           setTechnicians(data.technicians)
+          setLoading(false)
         }
       } catch (error) {
         console.log(error)
@@ -60,10 +61,11 @@ const Shop = () => {
           setSearch={setSearch}
         />
         <div className="shop-items-container">
-        <ShopLayout />  
+        <ShopLayout /> 
+        {loading && <Loader/>} 
         <div className="shop-card-container">
-          {loading && <Loader/>}
-          {technicians.length && technicians.map(technician=>(
+          
+          {technicians.length>0 && technicians.map(technician=>(
             <Card technician={technician} key={technician._id}/>
           ))}
           </div> 

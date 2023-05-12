@@ -19,28 +19,7 @@ const PostSchema = new Schema(
       ref: "Customer",
       required: true,
     },
-    bids: [
-      {
-        technician: {
-          type: mongoose.Schema.ObjectId,
-          ref: "Technician",
-        },
-        amount: {
-          type: Number,
-          required: true,
-        },
-        bidMessage: {
-          type: String,
-          required: true,
-          maxlength: [1000, "Description can not be more than 1000 characters"],
-        },
-
-        bidAccepted: {
-          type: Boolean,
-          default: false,
-        },
-      },
-    ],
+    
     status: {
       type: String,
       enum: ["open", "closed", "expired", "completed"],
@@ -64,7 +43,7 @@ const PostSchema = new Schema(
   },
   { timestamps: true }
 );
-
+/* 
 PostSchema.index(
   { "bids.technician": 1 },
   { unique:true, 
@@ -85,9 +64,9 @@ PostSchema.pre("save", function (next) {
   console.log(acceptedBid)
   if (acceptedBid) {
     post.status = "closed";
-  } */
+  } 
   next();
-});
+}); */
 
 const Post = mongoose.model("Post", PostSchema);
 
