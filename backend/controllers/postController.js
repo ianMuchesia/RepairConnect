@@ -2,6 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, NotFoundError } = require("../errors");
 const Post = require("../models/Post");
 const { checkPermission } = require("../utils");
+const Bid = require("../models/Bid");
 
 const createPost = async (req, res) => {
   const { item, description } = req.body;
@@ -70,6 +71,9 @@ const deletePost = async (req, res) => {
   }
   
   checkPermission(req.user, post.customer);
+
+  await Post.deleteOne({ _id: postID })
+  await Bid.deleteMany({ post: postID });
 
   res.status(StatusCodes.OK).json({ success: true, post });
 };

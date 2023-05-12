@@ -25,6 +25,7 @@ const authRouter = require('./routes/authRoutes')
 const technicianRouter = require('./routes/technicianRoutes')
 const customerRouter = require('./routes/customerRoutes') 
 const postRouter = require('./routes/postRoutes')
+const bidRouter = require('./routes/bidRoutes')
 //middleware
 const notFoundMiddleWare = require('./middleware/not-found')
 const errorHandlerMiddleWare = require('./middleware/error-handler')
@@ -53,6 +54,7 @@ app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/technician', technicianRouter)
  app.use('/api/v1/customer', customerRouter) 
  app.use('/api/v1/post', postRouter) 
+ app.use('/api/v1/bid', bidRouter) 
 
 
 app.use(errorHandlerMiddleWare)

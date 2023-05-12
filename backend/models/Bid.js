@@ -25,7 +25,9 @@ const BidSchema = new Schema({
     type: Boolean,
     default: false,
   },
-});
+}, {timestamps: true});
+
+BidSchema.index({ technician: 1, post: 1 }, { unique: true });
 
 const Bid = mongoose.model("Bid", BidSchema);
 
