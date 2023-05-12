@@ -39,7 +39,7 @@ const Navbar = () => {
         }, 2000);
       }
     } catch (error: any) {
-      console.log(error);
+     
       if (error.code === "ECONNABORTED") {
         // handle timeout error
         toast.error("Request timed out. Please try again later.");

@@ -61,8 +61,8 @@ const Questions = () => {
 
       const handleSubmit = (event:React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault()
-        console.log(answers)
-        console.log(selectedAnswers)
+       
+        
         navigate('/TechnicianSignUp', { state: { isTechnician: true } });
       }
 

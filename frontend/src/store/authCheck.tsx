@@ -11,8 +11,7 @@ const checkAuthentication=()=>{
     return async(dispatch:AppDispatch)=>{
         try {
             const {data} = await axios.get(`${baseURL}auth/showMe`, {withCredentials: true})
-         
-            console.log(data)
+        
             if(data.success){
                 const {name , userId , role} = data.user
                 dispatch(setIsAuthenticated({

@@ -40,9 +40,9 @@ const [technician, setTechnician] = useState<Technician>({
     try {
       const {data} = await axios.get(`${baseURL}technician/${shopID}`, {withCredentials:true , timeout:5000})
       if(isMounted){
-        console.log(data)
-        setTechnician(data.technician)
-        dispatch(setPath(`/Shops/${data.technician.shop}`));
+        
+        setTechnician(data.user)
+        dispatch(setPath(`/Shops/${data.user.shop}`));
       
 
       }

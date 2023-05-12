@@ -17,7 +17,7 @@ const getSingleTechnician = async (req, res) => {
 
 
 
-  res.status(StatusCodes.OK).json({ success: true, technician });
+  res.status(StatusCodes.OK).json({ success: true, user:technician });
 };
 
 const getAllTechnicians = async (req, res) => {

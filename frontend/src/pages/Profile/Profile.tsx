@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import { useAppSelector } from "../../ReduxHooks";
 import axios from "axios";
 import { baseURL } from "../../Api";
-import { Customer, Technician } from "../../@types/@types";
+import {  Technician } from "../../@types/@types";
 import { Loader } from "../../components";
 const Profile = () => {
   /* const navigate = useNavigate() */
@@ -40,8 +40,8 @@ const Profile = () => {
             { withCredentials: true }
           );
           if (isMounted && data.success) {
-            console.log(data);
-            setUserProfile(data.user as Technician | Customer);
+           
+            setUserProfile(data.user as Technician);
             setLoading(false);
           }
         }
@@ -57,6 +57,7 @@ const Profile = () => {
   }, [authState.user.role]);
 
   
+ 
 
   return (
     <section className="profile">
@@ -75,7 +76,7 @@ const Profile = () => {
         ) : (
           <div className="profileContainer">
             <Routes>
-              <Route path="/" element={<Info userProfile={userProfile} />} />
+              <Route path="/" element={<Info userProfile={userProfile as Technician} />} />
               <Route path="/Settings" element={<Settings userProfile={userProfile as Technician}/>} />
               <Route path="/Chat" element={<Chat />} />
               <Route path="/Notification" element={<Notification />} />

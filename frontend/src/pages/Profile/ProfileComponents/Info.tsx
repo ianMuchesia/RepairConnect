@@ -3,10 +3,14 @@ import {  Technician } from "../../../@types/@types"
 
 import { userNavbarImage } from "../../../assets"
 interface Props{
-  userProfile: {}; 
+  userProfile: Technician; 
 }
 
 const Info = ({userProfile}:Props) => {
+
+  if(userProfile === undefined){
+    return <h2>Something went wrong , try again later</h2>
+  }
  
   const {name , location, email, role, shop, description} = userProfile as Technician
 
