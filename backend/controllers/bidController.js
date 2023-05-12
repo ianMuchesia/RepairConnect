@@ -23,6 +23,10 @@ const getBids = async (req, res) => {
   res.status(StatusCodes.OK).json({ success: true, bids });
 };
 
+
+
+
+
 const getSingleBid = async (req, res) => {
   const { postID, bidID } = req.params;
 
@@ -45,7 +49,7 @@ const getSingleBid = async (req, res) => {
 const acceptBid = async (req, res) => {
   const { postID, bidID } = req.params;
 
-  const post = await Post.findOne({ post: postID, customer: req.user.userId });
+  const post = await Post.findOne({ _id: postID, customer: req.user.userId });
 
   if (!post) {
     throw new NotFoundError(`Post with id:${postID} not found`);
@@ -66,8 +70,6 @@ const acceptBid = async (req, res) => {
   res.status(StatusCodes.OK).json({ success: true, bid });
 };
 
-
-
 const createBid = async (req, res) => {
   const { postID } = req.params;
 
@@ -79,7 +81,6 @@ const createBid = async (req, res) => {
     technician: technicianID,
   });
 
-  console.log(bidExists);
   if (bidExists) {
     throw new BadRequestError(" You can only bid once on a post");
   }
@@ -92,14 +93,50 @@ const createBid = async (req, res) => {
 
   res.status(StatusCodes.CREATED).json({ success: true });
 };
-const deleteBid = async (req, res) => {
-  res.send("hello wold");
-};
+
 const getTechnicianBids = async (req, res) => {
-  res.send("hello wold");
+  const bids = await Bid.find({ technician: req.user.userId }).populate({
+    path: "post",
+    select: "item description image status",
+  });
+
+  res.status(StatusCodes.OK).json({ success: true, bids });
 };
 const getSingleTechnicianBid = async (req, res) => {
-  res.send("hello wold");
+  const { bidID } = req.params;
+  const bid = await Bid.findOne({
+    _id: bidID,
+    technician: req.user.userId,
+  }).populate({
+    path: "post",
+    select: "item description image status",
+  });
+
+  if (!bid) {
+    throw new NotFoundError(`Bid with id:${bidID} not found`);
+  }
+
+  res.status(StatusCodes.OK).json({ success: true, bid });
+};
+
+const deleteBid = async (req, res) => {
+  const { bidID } = req.params;
+
+  const bid = await Bid.findOne({ _id: bidID, technician: req.user.userId });
+
+  if (!bid) {
+    throw new NotFoundError(`Bid with id:${bidID} not found`);
+  }
+
+  if (bid.bidAccepted) {
+    throw new BadRequestError(
+      "You can not delete bids that are accepted, please cancel first"
+    );
+  }
+
+  await Bid.deleteOne({ _id: bidID });
+
+  res.status(StatusCodes.OK).json({ success: true });
 };
 
 module.exports = {
