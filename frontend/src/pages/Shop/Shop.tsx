@@ -9,6 +9,7 @@ import axios from "axios";
 import { baseURL } from "../../Api";
 import { Technician } from "../../@types/@types";
 import { Card, Categorize, ShopLayout } from "./ShopComponents";
+import { ToastContainer, toast } from "react-toastify";
 
 
 const Shop = () => {
@@ -16,7 +17,7 @@ const Shop = () => {
 
   const dispatch = useAppDispatch();
 
-  dispatch(setPath(location.pathname));
+  
 
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -25,20 +26,29 @@ const Shop = () => {
 
   const [loading , setLoading ] = useState(false)
 
+
   useEffect(()=>{
+    dispatch(setPath(location.pathname));
     let isMounted = true;
     const fetchRepairShops = async()=>{
       try {
         setLoading(true)
-        const { data } = await axios.get(`${baseURL}technician`, {withCredentials:true})
+        const { data } = await axios.get(`${baseURL}technician`, {withCredentials:true  ,timeout: 5000})
 
+       
         if(isMounted){
          
           setTechnicians(data.technicians)
           setLoading(false)
         }
-      } catch (error) {
+      } catch (error: any) {
         console.log(error)
+        if (error.code === "ECONNABORTED") {
+          // handle timeout error
+          toast.error("Request timed out. Please try again later.");
+          return
+        }
+        toast.error("Something wrong happened try again later");
       }finally{
         setLoading(false)
       }
@@ -49,11 +59,12 @@ const Shop = () => {
     }
 
   },[])
-  console.log(technicians)
+
 
   return (
     <>
       <Path />
+      <ToastContainer/>
       <div className="shop-container">
         <Categorize
           search={search}

@@ -1,0 +1,34 @@
+.single-shop-main-image{
+    max-width: 100%;
+    height:auto
+}
+.single-shop-other-images{
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   padding: 1em 0.4em;
+
+
+}
+.single-shop-other-image{
+    height: 4em;
+    max-width:4em;
+}
+.single-shop-content{
+    padding: 1em 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap:1em;
+}
+.single-shop-content h5{
+    font-weight:500;
+}
+.single-shop-content p{
+    font-weight: 300;
+    font-size: 0.95rem;
+}
+.single-shop-content button{
+    border-radius: 5px;
+    min-width: 100%;
+}

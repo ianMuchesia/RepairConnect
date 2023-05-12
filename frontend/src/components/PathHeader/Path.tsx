@@ -7,12 +7,12 @@ const Path =  memo(function Path() {
 
     const pathname = useAppSelector(state=>state.path)
 
-    console.log(pathname)
+
   return (
     <div className="paths">
         <div className="paths-container">
         <Link to='/'><h4>Home</h4></Link>
-        {pathname &&  <Link to={`${pathname}`}><h4>{pathname}</h4></Link>}
+        {pathname &&  <Link to={`/${pathname.split('/')[1]}`}><h4>{pathname}</h4></Link>}
         </div>
         
         

@@ -119,6 +119,15 @@ const getSingleTechnicianBid = async (req, res) => {
   res.status(StatusCodes.OK).json({ success: true, bid });
 };
 
+const cancelBid = async(req, res)=>{
+  const { bidID } = req.params;
+  const bid = await Bid.findOne({ _id: bidID });
+  if (!bid) {
+    throw new NotFoundError(`Bid with id:${bidID} not found`);
+    }
+    
+
+}
 const deleteBid = async (req, res) => {
   const { bidID } = req.params;
 

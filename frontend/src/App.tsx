@@ -2,7 +2,7 @@ import {useEffect} from'react'
 import ScrollToTop from "./utils/scrollToTop";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Footer, Navbar } from "./components"
-import { Home, Login, Profile, Questions, Shop, SignUp, TechnicianSignUp } from "./pages"
+import { Home, Login, Profile, Questions, Shop, SignUp, SingleShop, TechnicianSignUp } from "./pages"
 import "./index.css"
 import { useAppDispatch } from "./ReduxHooks"
 import checkAuthentication from "./store/authCheck"
@@ -24,6 +24,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/Shops" element={<Shop/>}/>
+      <Route path="/Shops/:shopID" element={<SingleShop/>}/>
       <Route path="/Login" element={<Login/>}/>
       <Route path="/SignUp" element={<SignUp/>}/>
       <Route path="/Questions" element={<Questions/>}/>

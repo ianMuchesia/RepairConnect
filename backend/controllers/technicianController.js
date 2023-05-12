@@ -15,9 +15,9 @@ const getSingleTechnician = async (req, res) => {
     throw new NotFoundError(`user with id:${userID} not found`);
   }
 
-  checkPermission(req.user, technician._id);
 
-  res.status(StatusCodes.OK).json({ success: true, user: technician });
+
+  res.status(StatusCodes.OK).json({ success: true, technician });
 };
 
 const getAllTechnicians = async (req, res) => {
@@ -33,7 +33,7 @@ const getAllTechnicians = async (req, res) => {
     queryObject.name = { $regex: search, $options: "i" };
   }
 
-  let result = Technician.find(queryObject).select('-password');
+  let result = Technician.find(queryObject).select('name location shop avatar');
 
   if (sort) {
     const sortArray = sort.split(",").join(" ");
