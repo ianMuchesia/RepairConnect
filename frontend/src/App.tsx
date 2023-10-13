@@ -6,6 +6,7 @@ import { Home, Login, Profile, Questions, Shop, SignUp, SingleShop, TechnicianSi
 import "./index.css"
 import { useAppDispatch } from "./ReduxHooks"
 import checkAuthentication from "./store/authCheck"
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     <BrowserRouter>
     <ScrollToTop/>
     <Navbar/>
+    <ToastContainer/>
     <main className="wrapper">
     <Routes>
       <Route path="/" element={<Home/>}/>

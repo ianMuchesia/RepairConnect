@@ -26,9 +26,7 @@ interface Props {
   ) => void;
 }
 const ImageUploader = ({
-
   handleFileUpload,
- 
   handleFilesUpload,
   updateForm
 }: Props) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
-import "../Login/login.css";
+import "./../login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "tippy.js/dist/tippy.css";

@@ -1,10 +1,12 @@
 import {useState} from 'react'
 import { Link } from "react-router-dom";
-import { login } from "../../assets";
-import "../Login/login.css";
-import { ToastContainer, toast } from "react-toastify";
-import { baseURL } from '../../Api';
+
+import "./login.css";
+import {  toast } from "react-toastify";
+
 import axios from 'axios';
+import { baseURL } from '../../Api';
+import { login } from '../../assets';
 
 const SignUp = () => {
 
@@ -60,7 +62,7 @@ const SignUp = () => {
   
   return (
     <section className="login-section">
-      <ToastContainer/>
+ 
       <div className="loginContainer">
         <form className="formLogin" onSubmit={handleSubmit}>
           <h4>Sign Up</h4>

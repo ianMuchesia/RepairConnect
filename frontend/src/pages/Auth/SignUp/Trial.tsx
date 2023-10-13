@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
 /* import "../Login/login.css"; */
-import axios from "axios";
+
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
