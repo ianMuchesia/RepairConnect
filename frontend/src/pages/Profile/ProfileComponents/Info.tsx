@@ -12,7 +12,7 @@ const Info = ({userProfile}:Props) => {
     return <h2>Something went wrong , try again later</h2>
   }
  
-  const {name , location, email, role, shop, description} = userProfile as Technician
+  const {name , location, email, role, shop, description} = userProfile 
 
   
   return (

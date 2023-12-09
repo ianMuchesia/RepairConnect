@@ -8,18 +8,9 @@ interface Props {
 }
 
 const Settings = ({ userProfile }: Props) => {
-  const { name, location, email, role, shop,shopImages, description, avatar } =
-    userProfile;
 
-  const [updateForm, setUpdateForm] = useState({
-    name: name,
-    location: location,
-    email: email,
-    avatar: avatar,
-    shop: shop,
-    description: description,
-    shopImages:shopImages
-  });
+
+  const [updateForm, setUpdateForm] = useState(userProfile);
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>|React.ChangeEvent<HTMLTextAreaElement> |React.ChangeEvent<HTMLSelectElement>)=>{
     setUpdateForm(prevForm=>({
@@ -77,7 +68,7 @@ const Settings = ({ userProfile }: Props) => {
           handleChangeSelect={handleChangeSelect}
        
         />
-       {role === 'technician' && <div className="profile-images-container">
+       {userProfile.role === 'technician' && <div className="profile-images-container">
           <h2>Shop Images</h2>
           <p>you can add upto 5 images</p>
 

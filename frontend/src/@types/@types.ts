@@ -23,3 +23,9 @@ export interface Customer {
   role:string;
   location: string;
 }
+
+export type ResponseProfile= {
+  success:boolean;
+  user:Technician;
+
+}

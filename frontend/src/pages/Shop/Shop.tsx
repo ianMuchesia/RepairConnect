@@ -1,7 +1,7 @@
 import { useState , useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import { Loader, Path } from "../../components";
-import { useAppDispatch } from "../../ReduxHooks";
+import { useAppDispatch } from "../../store/ReduxHooks";
 import { setPath } from "../../store/pathSlice";
 import "./shop.css";
 

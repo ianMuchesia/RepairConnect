@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { Loader, Path } from "../../components"
-import { useAppDispatch } from "../../ReduxHooks";
+import { useAppDispatch } from "../../store/ReduxHooks";
 import { setPath } from "../../store/pathSlice";
 import { useEffect, useState } from "react";
 import axios from "axios";

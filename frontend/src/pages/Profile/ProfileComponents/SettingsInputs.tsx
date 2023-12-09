@@ -22,7 +22,6 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
  
 
 
-  console.log(userProfile?.avatar)
 
   
 
@@ -98,7 +97,7 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
       </div>
 
      {userProfile.role === 'technician' &&  <div className="profile-description-textarea">
-        <label htmlFor="">Description</label>
+        <label htmlFor="shopName">Description</label>
         <textarea 
         id="shopName" placeholder="Write Something about yourself"
         rows={12}

@@ -1,5 +1,5 @@
 import {memo} from 'react'
-import { useAppSelector } from "../../ReduxHooks"
+import { useAppSelector } from "../../store/ReduxHooks"
 import "./path.css"
 import { Link } from 'react-router-dom'
 

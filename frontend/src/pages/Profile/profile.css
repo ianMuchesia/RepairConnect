@@ -22,7 +22,7 @@ Profile and Sidebar
 SideBar and Profile
 ===============
 */
-.sidebar-container{
+/* .sidebar-container{
    background: var(--grey-400);
     width: 90%;
     padding: 0em 0.75em;
@@ -32,7 +32,7 @@ SideBar and Profile
     bottom: 0%;
     height: 70vh;
     animation: sidebar 0.6s linear 0s forwards;
-}
+} */
 .side-bar-links{
     display: flex;
     flex-direction: column;
@@ -74,12 +74,12 @@ SideBar and Profile
   }
 
   @media screen and (min-width:800px) {
-    .profile{
+    /* .profile{
         position: static;
     }
     .sidebar-toggle{
         display: none;
-    }
+    }*/
     .hide-sidebar{
         display: block;
     }
@@ -88,6 +88,7 @@ SideBar and Profile
     }
     .sidebar-container{
         position: static;
+        height:70vh;
         background: none;
         width: 0;
        
@@ -98,7 +99,7 @@ SideBar and Profile
     }
     .profileContainer{
         grid-column: span 2 / span 2;
-    }
+    } 
 
   }
   @media screen and (min-width:1000px) {

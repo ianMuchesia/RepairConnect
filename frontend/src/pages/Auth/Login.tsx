@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { baseURL } from "../../Api";
 import axios from "axios";
-import { useAppDispatch } from "../../ReduxHooks";
+import { useAppDispatch } from "../../store/ReduxHooks";
 import { setIsAuthenticated } from "../../store/authSlice";
 
 const Login = () => {

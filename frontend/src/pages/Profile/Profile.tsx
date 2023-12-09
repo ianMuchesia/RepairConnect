@@ -5,59 +5,33 @@ import {
   Settings,
   Sidebar,
 } from "./ProfileComponents";
-import { useState, useEffect } from "react";
+import {  useState } from "react";
 import "./profile.css";
 import { BsLayoutSidebarInsetReverse } from "react-icons/bs";
 
 import { Routes, Route } from "react-router-dom";
-import { useAppSelector } from "../../ReduxHooks";
-import axios from "axios";
-import { baseURL } from "../../Api";
-import {  Technician } from "../../@types/@types";
-import { Loader } from "../../components";
+import { useAppSelector } from "../../store/ReduxHooks";
+import AuthLoader from "../../components/Loader/AuthLoader";
+import { useGetProfileQuery } from "../../store/service/Api";
+import Posts from "./ProfileComponents/Posts";
+import Create from "./ProfileComponents/Create";
+
 const Profile = () => {
-  /* const navigate = useNavigate() */
+
   const authState = useAppSelector((state) => state.auth);
-  
+
 
   const [sidebar, setSideBar] = useState(false);
-  const [userProfile, setUserProfile] = useState<{}>({});
-  
 
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchProfileData = async () => {
-      try {
-        setLoading(true);
-
-        if ( authState.user.role !== "") {
-          // Check if userId and authState.user are not empty strings
-          const { data } = await axios.get(
-            `${baseURL}${authState.user.role}/${authState.user.userId}`,
-            { withCredentials: true }
-          );
-          if (isMounted && data.success) {
-           
-            setUserProfile(data.user as Technician);
-            setLoading(false);
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchProfileData();
-    return () => {
-      isMounted = false;
-    };
-  }, [authState.user.role]);
-
-  
  
+
+  const combinedArg = `${authState.user.role}/${authState.user.userId}`;
+  const { data, isLoading } = useGetProfileQuery(combinedArg)
+
+
+
+
+
 
   return (
     <section className="profile">
@@ -70,19 +44,23 @@ const Profile = () => {
           <Sidebar setSideBar={setSideBar} />
         </div>
 
-        {loading ? (
-          
-         <Loader/>
-        ) : (
-          <div className="profileContainer">
+
+        {isLoading && <AuthLoader />}
+
+        <>
+          {data?.user && <div className="profileContainer">
             <Routes>
-              <Route path="/" element={<Info userProfile={userProfile as Technician} />} />
-              <Route path="/Settings" element={<Settings userProfile={userProfile as Technician}/>} />
+              <Route path="/" element={<Info userProfile={data?.user} />} />
+              <Route path="/Settings" element={<Settings userProfile={data?.user} />} />
               <Route path="/Chat" element={<Chat />} />
               <Route path="/Notification" element={<Notification />} />
+              <Route path="/Posts" element={<Posts/>}/>
+              <Route path="/Create" element={<
+              Create/>}/>
             </Routes>
-          </div>
-        )}
+          </div>}
+        </>
+
       </div>
     </section>
   );
