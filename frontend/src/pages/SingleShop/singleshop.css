@@ -1,5 +1,26 @@
+.single-shop-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+
+
+}
+.shop-details-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+
+}
+.single-shop-images{
+    width: 100%;
+    height: 100%;
+   
+}
+
 .single-shop-main-image{
-    max-width: 100%;
+    width: 100%;
     height:auto
 }
 .single-shop-other-images{
@@ -17,7 +38,7 @@
     padding: 1em 1.5em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+ 
     width: 100%;
     gap:1em;
 }
@@ -31,4 +52,24 @@
 .single-shop-content button{
     border-radius: 5px;
     min-width: 100%;
+}
+
+.map-container{
+    height: 100%;
+    width: 100%;
+}
+.leaflet-container {
+    height: 50vh;
+    width: 100%;
+}
+@media screen and (min-width: 850px) {
+    .single-shop-section{
+      
+        gap: 1em;
+        padding: 2em 4em;
+    }
+    .shop-details-container{
+        flex-direction: row;
+        gap: 1em;
+    }
 }

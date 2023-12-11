@@ -76,7 +76,7 @@ const Login = () => {
   };
   return (
     <section className="login-section">
-      <ToastContainer />
+   
       <div className="loginContainer">
         <div className="loginImageContainer">
           <img src={login} alt="login-image" />

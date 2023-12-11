@@ -28,7 +28,8 @@ const postRouter = require('./routes/postRoutes')
 const bidRouter = require('./routes/bidRoutes')
 //middleware
 const notFoundMiddleWare = require('./middleware/not-found')
-const errorHandlerMiddleWare = require('./middleware/error-handler')
+const errorHandlerMiddleWare = require('./middleware/error-handler');
+const Location = require('./models/Location');
 
 
 app.set('trust proxy', 1);
@@ -51,10 +52,14 @@ app.use(express.json())
 
 //routes
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/technician', technicianRouter)
+app.use('/api/v1/technicians', technicianRouter)
  app.use('/api/v1/customer', customerRouter) 
  app.use('/api/v1/post', postRouter) 
  app.use('/api/v1/bid', bidRouter) 
+//  app.get('/api/v1/trial', async(req,res)=>{
+//      const locations = await Location.find()
+//       res.status(200).json({locations})
+//  })
 
 
 app.use(errorHandlerMiddleWare)

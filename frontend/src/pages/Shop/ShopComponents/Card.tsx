@@ -10,7 +10,7 @@ const Card = ({technician}:Props) => {
               <img src={technician.avatar} className="shop-card-image" alt={technician.name} />
               <div className="shop-card-details">
               <h5 className="shop-card-location">
-                <span>Location:</span>{technician.location}
+                <span>Location:</span>{technician.location.name}
               </h5>
               <h6>{technician.name}</h6>
 

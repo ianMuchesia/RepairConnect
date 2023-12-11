@@ -56,7 +56,7 @@ const Navbar = () => {
     <header>
     
       <nav>
-      <ToastContainer/>
+   
       <span >{toggle?<AiOutlineClose className='toggle' onClick={()=>setToggle(false)}/>:<AiOutlineMenu className='toggle'  onClick={()=>setToggle(true)}/>}</span>
         <ul className={`${toggle? "nav-bar":"hide-navbar"}`}>
           <li className='toggle'><AiOutlineClose onClick={()=>setToggle(false)}/></li>

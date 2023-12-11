@@ -1,0 +1,44 @@
+[
+    {
+        "name":"Likoni",
+        "lat":-4.0841,
+        "lon":39.6608
+    },
+    {
+        "name":"Majengo",
+        "lat":-4.0376,
+        "lon":39.6557
+    },
+    {
+        "name":"Bombolulu",
+        "lat":-4.0209,
+        "lon":39.7025
+    },
+    {
+        "name":"Bamburi",
+        "lat":-4.0043,
+        "lon":39.7167
+    },
+    {
+        "name":"Mtwapa",
+        "lat":-3.9386,
+        "lon":39.7498
+    },
+    {
+        "name":"Mikindani",
+       "lat":-4.0049,
+        "lon":39.6287
+    },
+    {
+        "name":"Tudor",
+        "lat":-4.0340,
+        "lon":39.6647
+    },
+    {
+        "name":"Kisauni",
+        "lat":-4.0243,
+        "lon":39.6878
+    }
+
+
+]
