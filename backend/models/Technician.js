@@ -60,21 +60,9 @@ const TechnicianSchema = new Schema(
       default: "technician",
     },
     location:{
-      type:String,
-      enum: {
-        values: [
-          "Kizingo",
-          "Majengo",
-          "Likoni",
-          "Bamburi",
-          "Kisauni",
-          "Magongo",
-          "Mikindani",
-          "Nyali",
-        ],
-        message: "{VALUE} is not supported",
-      },
-    },
+      type: mongoose.Schema.ObjectId,
+      ref: 'Location',
+    }
   },
   { timestamps: true }, { minimize: false }
 );

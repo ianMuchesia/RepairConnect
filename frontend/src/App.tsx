@@ -1,20 +1,15 @@
-import {useEffect} from'react'
 import ScrollToTop from "./utils/scrollToTop";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Footer, Navbar } from "./components"
 import { Home, Login, Profile, Questions, Shop, SignUp, SingleShop, TechnicianSignUp } from "./pages"
 import "./index.css"
-import { useAppDispatch } from "./ReduxHooks"
-import checkAuthentication from "./store/authCheck"
 import { ToastContainer } from 'react-toastify';
+import PrivateRoute from "./PrivateRoute";
 
 
 function App() {
 
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(checkAuthentication());
-  }, []);
+
 
 
   return (
@@ -30,7 +25,11 @@ function App() {
       <Route path="/Login" element={<Login/>}/>
       <Route path="/SignUp" element={<SignUp/>}/>
       <Route path="/Questions" element={<Questions/>}/>
+
+      <Route element={<PrivateRoute/>}>
+
       <Route path="/Profile/*" element={<Profile/>}/>
+      </Route>
       <Route path="/TechnicianSignUp" element={<TechnicianSignUp/>}/>
     </Routes>
     </main>

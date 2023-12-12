@@ -176,4 +176,5 @@ textarea:focus{
 }
 .wrapper{
   min-height: calc(100vh - (113px));
+  margin-top: 86.2px;
 }

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logo, userNavbarImage } from "../../assets";
 import "./navbar.css";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { useAppDispatch, useAppSelector } from "../../ReduxHooks";
+import { useAppDispatch, useAppSelector } from "../../store/ReduxHooks";
 import { ToastContainer, toast } from "react-toastify";
 import { baseURL } from "../../Api";
 import axios from "axios";

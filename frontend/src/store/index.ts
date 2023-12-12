@@ -1,16 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
 import pathSlice from "./pathSlice";
+import { Api } from "./service/Api";
 // ...
 
 export const store = configureStore({
   reducer: {
     auth:authSlice,
     path:pathSlice,
+
+    [Api.reducerPath]: Api.reducer,
   },
+  middleware: (getDefault)=>getDefault().concat(Api.middleware)
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

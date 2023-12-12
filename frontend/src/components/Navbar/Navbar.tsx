@@ -3,7 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import { logo, userNavbarImage } from "../../assets"
 import "./navbar.css"
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import { useAppDispatch, useAppSelector } from '../../ReduxHooks'
+import { useAppDispatch, useAppSelector } from '../../store/ReduxHooks'
 import { ToastContainer, toast } from 'react-toastify'
 import { setisNotAuthenticated } from '../../store/authSlice'
 import axios from 'axios'
@@ -56,7 +56,7 @@ const Navbar = () => {
     <header>
     
       <nav>
-      <ToastContainer/>
+   
       <span >{toggle?<AiOutlineClose className='toggle' onClick={()=>setToggle(false)}/>:<AiOutlineMenu className='toggle'  onClick={()=>setToggle(true)}/>}</span>
         <ul className={`${toggle? "nav-bar":"hide-navbar"}`}>
           <li className='toggle'><AiOutlineClose onClick={()=>setToggle(false)}/></li>

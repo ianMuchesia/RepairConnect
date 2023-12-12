@@ -1,6 +1,6 @@
-import { AppDispatch } from "./index"
-import { baseURL } from "../Api"
-import { setIsAuthenticated, setisNotAuthenticated } from "./authSlice"
+import { AppDispatch } from "../index"
+import { baseURL } from "../../Api"
+import { setIsAuthenticated, setisNotAuthenticated } from "../authSlice"
 import axios from "axios"
 
 

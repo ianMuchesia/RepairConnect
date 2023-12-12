@@ -128,7 +128,7 @@ const TechnicianSignUp = () => {
 
   return (
     <form className="technician-form" onSubmit={handleSubmit}>
-      <ToastContainer />
+     
       <h3>Sign Up to Get started</h3>
       <div className="details-wrapper">
         <TechnicianDetails

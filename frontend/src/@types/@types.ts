@@ -6,7 +6,7 @@ export interface Technician {
   shopImages: string[];
   description: string;
   shop: string;
-  location: string;
+  location: Location;
   _id:string;
 }
 
@@ -23,3 +23,27 @@ export interface Customer {
   role:string;
   location: string;
 }
+
+export type ResponseProfile= {
+  success:boolean;
+  user:Technician;
+
+}
+export type ResponseTechnicians= {
+  success:boolean;
+  technicians:Technician[];
+
+}
+
+export type ResponseTechnician = {
+  success:boolean;
+  user:Technician;
+}
+
+
+export type Location = {
+  _id: string;
+  name: string;
+  lat: number;
+  lon: number;
+};

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { baseURL } from "../../Api";
 import axios from "axios";
-import { useAppDispatch } from "../../ReduxHooks";
+import { useAppDispatch } from "../../store/ReduxHooks";
 import { setIsAuthenticated } from "../../store/authSlice";
 
 const Login = () => {
@@ -76,7 +76,7 @@ const Login = () => {
   };
   return (
     <section className="login-section">
-      <ToastContainer />
+   
       <div className="loginContainer">
         <div className="loginImageContainer">
           <img src={login} alt="login-image" />

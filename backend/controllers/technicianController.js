@@ -1,8 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
-const { BadRequestError, NotFoundError } = require("../errors");
+const { NotFoundError } = require("../errors");
 const Technician = require("../models/Technician");
-const User = require("../models/Customer");
-const checkPermission = require("../utils/checkPermission");
+
 
 
 
@@ -10,7 +9,7 @@ const getSingleTechnician = async (req, res) => {
   const { id: userID } = req.params;
   const technician = await Technician.findOne({ _id: userID }).select(
     "-password"
-  );
+  ).populate('location', 'name lat lon');
   if (!technician) {
     throw new NotFoundError(`user with id:${userID} not found`);
   }
@@ -33,7 +32,7 @@ const getAllTechnicians = async (req, res) => {
     queryObject.name = { $regex: search, $options: "i" };
   }
 
-  let result = Technician.find(queryObject).select('name location shop avatar');
+  let result = Technician.find(queryObject).select('name location shop avatar').populate('location', 'name lat lon');
 
   if (sort) {
     const sortArray = sort.split(",").join(" ");

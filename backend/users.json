@@ -1,0 +1,173 @@
+[
+  {
+    "_id": "6450e965122c9de23c15a577",
+    "name": "George Yugi",
+    "email": "george@gmail.com",
+    "description": "Yugi's Shop is a one-stop-shop for all your needs in Sparki, Mombasa. From household essentials to groceries, electronics, and fashion, you can find it all here. Our store offers a wide range of high-quality products at competitive prices. We take pride in our exceptional customer service and knowledgeable staff who are always ready to assist you in finding what you need. Whether you're looking for a quick snack or doing a full weekly shop, Yugi's Shop is the place to go.",
+    "password": "$2a$10$2zCla.5UYo99C4.HGcuyxeA9MyYAqeSSaYX8gXOfQDfzdhs/Rh.Ja",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683021854/avatars/George%20Yugi-avatar.jpg",
+    "shop": "Yugi's Shop",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683024213/TechnicianShop/Yugi%27s%20Shop-shop.jpg"
+    ],
+    "averageRating": 0,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f92a",
+    "createdAt": "2023-05-02T10:43:49.704Z",
+    "updatedAt": "2023-05-02T10:43:49.704Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450f713c95aa5c104b31e07",
+    "name": "Jonnel Ceazer",
+    "email": "jonnel@gmail.com",
+    "description": "If you're in Likoni, be sure to check out Jonnel's shop! From household essentials to electronics and more, we have everything you need in one convenient location. Our knowledgeable staff is always ready to assist you in finding exactly what you're looking for. Plus, with our competitive prices and commitment to exceptional customer service, you're sure to have a great shopping experience. Come visit us today at Jonnel's!",
+    "password": "$2a$10$hWcmDrF3CvOitaGcJXinEe/ZwLm/SMFTLto8UuLnB9GhG/7iaNKq6",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683027730/avatars/Jonnel%20Ceazer-avatar.jpg",
+    "shop": "Jonnel's",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683027730/TechnicianShop/Jonnel%27s-shop.jpg"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f924",
+    "createdAt": "2023-05-02T11:42:11.374Z",
+    "updatedAt": "2023-05-02T11:42:11.374Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450f922c95aa5c104b31e13",
+    "name": "Cole Musili",
+    "email": "cole@gmail.com",
+    "description": "Cole's Electronic Shop and Repair is the go-to destination for all your electronic needs in Bombolulu. Our expert technicians provide exceptional repair services for various electronics, including TVs, radios, and computers. We also stock a wide range of high-quality electronic products, including the latest gadgets and accessories, at competitive prices. At Cole's, we are committed to providing excellent customer service and ensuring that you leave our shop with a smile on your face. Visit us today to experience our top-notch services and products.",
+    "password": "$2a$10$LyH5WJjqJOV2.4VUEFrkS.nOu8OsDhZCt0nrQKNU1z.Gz9tWbbw26",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028232/avatars/Cole%20Musili-avatar.jpg",
+    "shop": "Cole",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028259/TechnicianShop/Cole-shop.png"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f926",
+    "createdAt": "2023-05-02T11:50:58.450Z",
+    "updatedAt": "2023-05-02T11:50:58.450Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450f9c5c95aa5c104b31e17",
+    "name": "Grace Mwende",
+    "email": "grace@gmail.com",
+    "description": "Kyallo's is a top-notch electronic shop and repair center located in the heart of Bamburi. Our shop offers a wide variety of high-quality electronics products, including TVs, laptops, smartphones, and gaming consoles, all at competitive prices. Additionally, our experienced technicians are always ready to provide top-quality repair services for any electronic device you may have. At Kyallo's, we are committed to providing exceptional customer service and ensuring that our clients get the best value for their money. So whether you're looking to buy a new gadget or need repairs for an old one, Kyallo's is the place to go.",
+    "password": "$2a$10$Ewy3HXuL/gOjZY9CsqJxA.U1cIr/pYSZ2l4m1tdUVObsjQh5qZ5Ky",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028420/avatars/Grace%20Mwende-avatar.jpg",
+    "shop": "Kyallo's",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028422/TechnicianShop/Kyallo%27s-shop.jpg"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f927",
+    "createdAt": "2023-05-02T11:53:41.103Z",
+    "updatedAt": "2023-05-02T11:53:41.103Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450faffdccaeb09e27f6ee6",
+    "name": "Sofia Athman",
+    "email": "sofia@gmail.com",
+    "description": "\nSofia's Electronics is your one-stop-shop for all your electronic needs in Kisauni. Our shop offers a wide range of high-quality electronic products, including phones, laptops, TVs, home theatre systems, and more. We take pride in our exceptional customer service and knowledgeable staff who are always ready to assist you in finding what you need. Whether you're looking to upgrade your devices or need a repair, Sofia's Electronics is the place to go. Visit us today in Kisauni to experience our excellent products and services.",
+    "password": "$2a$10$dpZBxb/VFx.drKaLfx431Ozg9ZJAfmq4vCQazn5vu2Wv6CPqPgIyy",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028732/avatars/Sofia%20Athman-avatar.png",
+    "shop": "Sofia",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028736/TechnicianShop/Sofia-shop.jpg"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f92b",
+    "createdAt": "2023-05-02T11:58:55.536Z",
+    "updatedAt": "2023-05-02T11:58:55.536Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450fa38c95aa5c104b31e1b",
+    "name": "Magdalene Gathoni",
+    "email": "magdalene@gmail.com",
+    "description": "Maggie's is your one-stop-shop for all your electronic needs in Magongo, Mombasa. We offer high-quality repair services and a wide range of electronic products at competitive prices. From smartphones to laptops, cameras to gaming consoles, you can find it all here. Our knowledgeable staff is always ready to assist you in finding the right product or service that suits your needs. Whether you're looking to repair your electronic device or upgrade to a new one, Maggie's is the place to go.",
+    "password": "$2a$10$2GgUgs7sD1ZQb2UEFKmC4ONdgWKG0nLGxFHcfm5sRVuBHI9Nik9Ce",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028536/avatars/Magdalene%20Gathoni-avatar.jpg",
+    "shop": "Maggie's",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028536/TechnicianShop/Maggie%27s-shop.jpg"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location":"65772c617891e7f3ad96f928",
+    "createdAt": "2023-05-02T11:55:36.087Z",
+    "updatedAt": "2023-05-02T11:55:36.087Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450fccbdccaeb09e27f6ef2",
+    "name": "Cliff Cheruiyot",
+    "email": "cliff@gmail.com",
+    "description": "Cliff's is your go-to electronics repair shop located in Majengo. We specialize in repairing a wide range of electronic devices, including smartphones, laptops, gaming consoles, and more. Our team of experienced technicians is dedicated to providing quality repair services, ensuring that your device is fixed in no time. We use only the highest quality replacement parts, so you can be sure that your device is in good hands. At Cliff's, we value our customers' satisfaction and strive to provide exceptional service at competitive prices. Visit us today for all your electronics repair needs!",
+    "password": "$2a$10$LIywTX3qGeyd2GfSduHO5udployyyPXdPYznwaJCJzgmNiNGdhdfe",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028994/avatars/Cliff%20Cheruiyot-avatar.jpg",
+    "shop": "Cliff",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028898/TechnicianShop/Cliff-shop.jpg"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f925",
+    "createdAt": "2023-05-02T12:06:35.305Z",
+    "updatedAt": "2023-05-02T12:06:35.305Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450f79dc95aa5c104b31e0b",
+    "name": "Evans Mwirigi",
+    "email": "evans@gmail.com",
+    "description": "Evanso's shop, located in the Mikindani area, is your one-stop destination for all your shopping needs. Whether you're looking for fresh produce, household essentials, or trendy fashion, we have it all. Our store boasts a wide range of high-quality products, all available at competitive prices. Our friendly and knowledgeable staff are always on hand to assist you in finding exactly what you need. So why not visit Evanso's shop today and experience exceptional service and unbeatable prices.",
+    "password": "$2a$10$4SkIkXhhpO1/JMR6t1e85.VRjtsc7bU.5Nj/4B/GOMezhxaP53t4W",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683027862/avatars/Evans%20Mwirigi-avatar.jpg",
+    "shop": "Evanso",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683027863/TechnicianShop/Evanso-shop.jpg"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f929",
+    "createdAt": "2023-05-02T11:44:29.943Z",
+    "updatedAt": "2023-05-02T11:44:29.943Z",
+    "__v": 0
+  },
+  {
+    "_id": "6450f855c95aa5c104b31e0f",
+    "name": "Alfred Musau",
+    "email": "alfred@gmail.com",
+    "description": "Welcome to Alfie's Electric Repair Shop, your one-stop-shop for all your electric repair needs in Likoni. Our experienced technicians provide high-quality and reliable repair services for a wide range of electronic devices, including TVs, laptops, smartphones, and more. We take pride in our excellent customer service and affordable prices, ensuring that you get the best value for your money. So whether you need a quick fix or a more extensive repair, trust Alfie's Electric Repair Shop to get the job done right.",
+    "password": "$2a$10$okgG3lizVD1tK4fdk6/ES..RVaSJRxu4fcsgOuzX4JlvL1C3Qbi1u",
+    "avatar": "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028049/avatars/Alfred%20Musau-avatar.jpg",
+    "shop": "Alfie",
+    "shopImages": [
+      "https://res.cloudinary.com/dx1lyzcdb/image/upload/v1683028049/TechnicianShop/Alfie-shop.jpg"
+    ],
+    "averageRating": 3,
+    "numOfReviews": 0,
+    "role": "technician",
+    "location": "65772c617891e7f3ad96f924",
+    "createdAt": "2023-05-02T11:47:33.365Z",
+    "updatedAt": "2023-05-02T11:47:33.365Z",
+    "__v": 0
+  }
+]
