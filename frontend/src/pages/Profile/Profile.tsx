@@ -5,16 +5,15 @@ import {
   Settings,
   Sidebar,
 } from "./ProfileComponents";
-import {  useState } from "react";
+import { useState } from "react";
 import "./profile.css";
 import { BsLayoutSidebarInsetReverse } from "react-icons/bs";
-
 import { Routes, Route } from "react-router-dom";
 import { useAppSelector } from "../../store/ReduxHooks";
 import AuthLoader from "../../components/Loader/AuthLoader";
 import { useGetProfileQuery } from "../../store/service/Api";
-import Posts from "./ProfileComponents/Posts";
 import Create from "./ProfileComponents/Create";
+import Bids from "./ProfileComponents/Bids";
 
 const Profile = () => {
 
@@ -23,14 +22,12 @@ const Profile = () => {
 
   const [sidebar, setSideBar] = useState(false);
 
+
+  //combine the user role and user id to get the profile
+  const combinedArg = `${authState.user.role === "technician"?"technicians":"customers"}/${authState.user.userId}`;
+
  
-
-  const combinedArg = `${authState.user.role}/${authState.user.userId}`;
   const { data, isLoading } = useGetProfileQuery(combinedArg)
-
-
-
-
 
 
   return (
@@ -43,10 +40,7 @@ const Profile = () => {
         <div className={`${sidebar ? "" : "hide-sidebar"}`}>
           <Sidebar setSideBar={setSideBar} />
         </div>
-
-
         {isLoading && <AuthLoader />}
-
         <>
           {data?.user && <div className="profileContainer">
             <Routes>
@@ -54,9 +48,8 @@ const Profile = () => {
               <Route path="/Settings" element={<Settings userProfile={data?.user} />} />
               <Route path="/Chat" element={<Chat />} />
               <Route path="/Notification" element={<Notification />} />
-              <Route path="/Posts" element={<Posts/>}/>
-              <Route path="/Create" element={<
-              Create/>}/>
+              <Route path="/Bids" element={<Bids />} />
+              <Route path="/Create" element={<Create />} />
             </Routes>
           </div>}
         </>

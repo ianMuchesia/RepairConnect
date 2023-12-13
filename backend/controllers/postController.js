@@ -3,9 +3,17 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const Post = require("../models/Post");
 const { checkPermission } = require("../utils");
 const Bid = require("../models/Bid");
+const cloudinary = require("cloudinary").v2;
+
+// Configuration
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const createPost = async (req, res) => {
-  const { item, description } = req.body;
+  const { item, description ,image, otherImages} = req.body;
 
   if (!item || !description) {
     throw new BadRequestError("Please provide all the values");

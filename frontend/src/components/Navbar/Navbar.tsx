@@ -33,10 +33,9 @@ const Navbar = () => {
       if (data.success) {
         toast.success("You are logged out");
         dispatch(setisNotAuthenticated());
+        navigate("/");
         setToggle(false)
-        setTimeout(() => {
-          navigate("/");
-        }, 500);
+      
       }
     } catch (error: any) {
       console.log(error);

@@ -1,8 +1,8 @@
-
+import ChatList from "./ChatList"
 
 const Chat = () => {
   return (
-    <div>Chat</div>
+   <ChatList/>
   )
 }
 
