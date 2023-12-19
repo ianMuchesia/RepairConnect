@@ -53,9 +53,9 @@ app.use(express.json())
 //routes
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/technicians', technicianRouter)
- app.use('/api/v1/customer', customerRouter) 
- app.use('/api/v1/post', postRouter) 
- app.use('/api/v1/bid', bidRouter) 
+ app.use('/api/v1/customers', customerRouter) 
+ app.use('/api/v1/posts', postRouter) 
+ app.use('/api/v1/bids', bidRouter) 
 //  app.get('/api/v1/trial', async(req,res)=>{
 //      const locations = await Location.find()
 //       res.status(200).json({locations})

@@ -3,24 +3,44 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const Post = require("../models/Post");
 const { checkPermission } = require("../utils");
 const Bid = require("../models/Bid");
+const cloudinary = require("cloudinary").v2;
+
+// Configuration
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const createPost = async (req, res) => {
-  const { item, description } = req.body;
+  const { item, description, images } = req.body;
 
-  if (!item || !description) {
+  if (!item || !description || !images) {
     throw new BadRequestError("Please provide all the values");
   }
 
+  const responseImages = await Promise.all(
+    images.map((image) => cloudinary.uploader.upload(image))
+  );
+
+ 
   const post = await Post.create({
     item,
     description,
     customer: req.user.userId,
+    images: responseImages.map((image) => image.secure_url),
   });
-  res.status(StatusCodes.CREATED).json({ success: true, post });
+   res.status(StatusCodes.CREATED).json({ success: true,post });
 };
 
 const getPosts = async (req, res) => {
-  const posts = await Post.find({});
+  const posts = await Post.find({}).populate({
+    path: "bids",
+    populate: {
+      path: "technician",
+      model: "Technician",
+    },
+  });
 
   res.status(StatusCodes.OK).json({ success: true, posts });
 };
@@ -28,7 +48,15 @@ const getPosts = async (req, res) => {
 const getSinglePost = async (req, res) => {
   const { id: postID } = req.params;
 
-  const post = await Post.findOne({ _id: postID });
+  const post = await Post.findOne({ _id: postID })
+    .populate("customer")
+    .populate({
+      path: "bids",
+      populate: {
+        path: "technician",
+        model: "Technician",
+      },
+    });
 
   if (!post) {
     throw new NotFoundError(`Post with id:${postID} not found`);
@@ -63,16 +91,15 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
   const { id: postID } = req.params;
 
-
   const post = await Post.findOne({ _id: postID });
 
   if (!post) {
     throw new NotFoundError(`Post with id:${postID} not found`);
   }
-  
+
   checkPermission(req.user, post.customer);
 
-  await Post.deleteOne({ _id: postID })
+  await Post.deleteOne({ _id: postID });
   await Bid.deleteMany({ post: postID });
 
   res.status(StatusCodes.OK).json({ success: true, post });

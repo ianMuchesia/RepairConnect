@@ -30,16 +30,24 @@ const PostSchema = new Schema(
       maxlength: [1000, "Notes can not be more than 1000 characters"],
     },
 
-    image: {
-      type: String,
+   images:{
+      type: [String],
+      required: [true, "Please provide at least one image"],
+      validate: {
+        validator: function (images) {
+          return images.length <= 5;
+        },
+        message: "Images can not be more than 5",
+      },
+
     },
+      
+
     accepted: {
       type: Boolean,
       default: false,
     },
-    otherImages: {
-      type: [String],
-    },
+ 
   },
   { timestamps: true }
 );

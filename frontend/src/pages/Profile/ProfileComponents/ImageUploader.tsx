@@ -1,13 +1,13 @@
 import Tippy from "@tippyjs/react";
 
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import { Technician } from "../../../@types/@types";
+import { Location, Technician } from "../../../@types/@types";
 
 interface Props {
   userProfile: Technician;
   updateForm: {
     name: string;
-    location: string;
+    location: Location;
     email: string;
     avatar: string;
     shop: string;
