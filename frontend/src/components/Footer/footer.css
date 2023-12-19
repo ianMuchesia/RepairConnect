@@ -4,6 +4,7 @@ footer{
     display: flex;
     justify-content: space-around;
     padding-top: 1.2em;
+    z-index: 999;
 }
 footer h5{
    font-family:  "Montserrat", sans-serif;

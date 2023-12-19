@@ -90,6 +90,7 @@ TechnicianSchema.pre("save", async function (next) {
 
 TechnicianSchema.methods.comparePassword = async function (candidatePassword) {
   const isMatch = await bcrypt.compare(candidatePassword, this.password);
+  console.log(isMatch)
   return isMatch;
 };
 

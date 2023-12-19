@@ -12,7 +12,7 @@ import { Routes, Route } from "react-router-dom";
 import { useAppSelector } from "../../store/ReduxHooks";
 import AuthLoader from "../../components/Loader/AuthLoader";
 import { useGetProfileQuery } from "../../store/service/Api";
-import Create from "./ProfileComponents/Create";
+import Create from "./ProfileComponents/Create/Create";
 import Bids from "./ProfileComponents/Bids";
 
 const Profile = () => {

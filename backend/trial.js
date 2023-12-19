@@ -19,7 +19,7 @@ const addToDB = async ()=>{
     }
 }
 
-//addToDB()
+addToDB()
 const fetchAndSaveUsers = async () => {
     try {
       // Connect to MongoDB
@@ -45,3 +45,5 @@ const fetchAndSaveUsers = async () => {
 
 
 //   fetchAndSaveUsers()
+
+

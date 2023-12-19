@@ -4,7 +4,7 @@ import { logo, userNavbarImage } from "../../assets"
 import "./navbar.css"
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import { useAppDispatch, useAppSelector } from '../../store/ReduxHooks'
-import { ToastContainer, toast } from 'react-toastify'
+import {  toast } from 'react-toastify'
 import { setisNotAuthenticated } from '../../store/authSlice'
 import axios from 'axios'
 import { baseURL } from '../../Api'

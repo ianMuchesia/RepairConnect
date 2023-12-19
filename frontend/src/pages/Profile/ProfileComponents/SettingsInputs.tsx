@@ -1,12 +1,11 @@
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import Tippy from "@tippyjs/react";
-import { Technician } from '../../../@types/@types';
-import { SelectLocation } from '../../../utils/selectLocation';
+import { Location, Technician } from '../../../@types/@types';
 interface Props{
   userProfile: Technician; 
   updateForm: {
     name: string;
-    location: string;
+    location: Location;
     email: string;
     avatar: string;
     shop: string;
@@ -18,7 +17,7 @@ handleChangeSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 
 }
 
-const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange, handleChangeSelect}:Props) => {
+const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange}:Props) => {
  
 
 
@@ -83,18 +82,18 @@ const SettingsInputs = ({userProfile, updateForm, handleFileUpload, handleChange
         onChange={handleChange}
          />
       </div>}
-      <div className="profile-name-settings">
+      {/* <div className="profile-name-settings">
         <label htmlFor="location">Location</label>
         <select 
         id="location" placeholder="location"
         name='location'
-        value={updateForm.location || ""}
+        value={updateForm.location.name || ""}
         onChange={handleChangeSelect}
          >
           <option value="">Select a location</option>
           {SelectLocation.map((location, index) => <option key={index} value={location}>{location}</option>)}
          </select>
-      </div>
+      </div> */}
 
      {userProfile.role === 'technician' &&  <div className="profile-description-textarea">
         <label htmlFor="shopName">Description</label>

@@ -28,8 +28,8 @@ SideBar and Profile
     position: relative;
     top: 20%;
     left:0%;
-    bottom: 0%;
-    height: 70vh;
+    bottom: 20%;
+  
 } 
 .side-bar-links{
     display: flex;
@@ -167,12 +167,13 @@ Info
 .info-avatar{
     height:100%;
     max-width: 100%;
-    border-radius: 50%;
+   
 }
 .info-avatar img{
-    max-height:400px;
-    max-width: 100%;
+    height:250px;
+    width: 250px;
     object-fit: cover;
+    border-radius: 50%;
 }
 .edit-info-btn-container{
     margin: 1em 0em;

@@ -12,7 +12,8 @@ const Info = ({userProfile}:Props) => {
     return <h2>Something went wrong , try again later</h2>
   }
  
-  const {name , location, email, role, shop, description} = userProfile 
+
+  const {name , location, email, role, shop, description,shopImages} = userProfile 
 
   
   return (
@@ -20,7 +21,7 @@ const Info = ({userProfile}:Props) => {
     <div className="info-section">
       <div className="info-name-container">
         <div className="info-avatar">
-          <img src={userNavbarImage} alt="avatar-image" />
+          <img src={shopImages?shopImages[0]:userNavbarImage} alt="avatar-image" />
         </div>
         <h3>{name}</h3>
         <h4>{location?.name}</h4>
