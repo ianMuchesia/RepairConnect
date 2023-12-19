@@ -34,8 +34,9 @@ const Create = () => {
        toast.success("Post created successfully");
         methods.reset();
       }
-    } catch (error) {
+    } catch (error:any) {
       console.error("Failed to create post:", error);
+      toast.error(error.data.msg);
     }
   };
   return (
